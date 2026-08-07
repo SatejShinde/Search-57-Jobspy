@@ -65,8 +65,41 @@ SEARCH_TERM = (
     'OR "robotics hardware" OR "robotics engineer") (intern OR co-op)'
 )
 
+# Cheap relevance score for triage -- NOT a resume-tailor-quality match
+# (that needs the full master resume + real judgment per posting, not a
+# fit for an unattended script). Counts keyword hits in the description
+# so postings can be ranked, not reviewed in whatever order they arrived.
+# Works best for Indeed/ZipRecruiter -- LinkedIn descriptions are often
+# thin here since fetching them in full increases request volume.
+SKILL_KEYWORDS = [
+    "plc", "hmi", "scada", "rtos", "freertos", "can bus", "i2c", "spi",
+    "uart", "mqtt", "modbus", "stm32", "arm cortex", "embedded linux",
+    "embedded c", "c++", "python", "pcb", "altium", "kicad", "fpga",
+    "verilog", "vhdl", "controls", "automation", "industrial automation",
+    "sensor", "low-power", "microcontroller", "firmware", "signal processing",
+    "power electronics", "robotics", "ros", "circuit design", "schematic",
+]
+
+
+def relevance_score(description: str) -> int:
+    text = (description or "").lower()
+    return sum(1 for kw in SKILL_KEYWORDS if kw in text)
+
 # Second-pass filter on the title -- catches phrasing the search terms
 # above didn't anticipate, trims noise from Indeed's description matching.
+# Location filter: only companies where you'd actually consider going.
+# California preferred (no relocation), remote also fine (no relocation
+# either way). JobSpy's location strings are "City, State, Country" --
+# state is usually abbreviated ("CA") but matching the full name too in
+# case a source returns it unabbreviated.
+# Location filter: only regions you'd actually consider without relocating.
+# Broadened from CA-only to "the West" -- CA, WA, OR, NV, AZ. That's an
+# assumption about what "the West" means; adjust WEST_STATES if you want
+# it wider (add CO/UT/ID) or narrower (back to just CA). Remote also
+# passes, since remote doesn't require relocating either way.
+WEST_STATES = {"CA", "WA", "OR", "NV", "AZ"}
+WEST_OR_REMOTE = re.compile(r"\b(" + "|".join(WEST_STATES) + r")\b|California", re.IGNORECASE)
+
 ROLE_KEYWORDS = re.compile(
     r"\b(embedded|firmware|hardware|electrical engineer(?:ing)?|"
     r"controls engineer(?:ing)?|automation engineer(?:ing)?|plc|iot|"
@@ -131,6 +164,7 @@ def main() -> None:
         df = None
 
     matched = 0
+    to_notify = []
     if df is not None:
         for _, row in df.iterrows():
             title = str(row.get("title") or "")
@@ -144,19 +178,38 @@ def main() -> None:
             if not job_url:
                 continue
 
+            location = str(row.get("location") or "")
+            is_remote = bool(row.get("is_remote"))
+            if not (is_remote or WEST_OR_REMOTE.search(location)):
+                continue
+
             matched += 1
             new_ids.add(job_url)
             if job_url not in seen:
-                total_new += 1
-                site = str(row.get("site") or "")
-                location = str(row.get("location") or "")
-                msg = (
-                    f"\U0001f195 <b>{company}</b>: {title}\n"
-                    f"{location}\n"
-                    f"{job_url}\n"
-                    f"<i>via {site}, JobSpy layer</i>"
-                )
-                send_telegram(token, chat_id, msg)
+                score = relevance_score(str(row.get("description") or ""))
+                to_notify.append({
+                    "score": score,
+                    "company": company,
+                    "title": title,
+                    "location": location,
+                    "job_url": job_url,
+                    "site": str(row.get("site") or ""),
+                })
+
+    # Highest-relevance postings first, so triage-by-scrolling actually
+    # works instead of reviewing 150 in arbitrary arrival order.
+    to_notify.sort(key=lambda j: j["score"], reverse=True)
+
+    for job in to_notify:
+        total_new += 1
+        msg = (
+            f"\U0001f195 <b>{job['company']}</b>: {job['title']}\n"
+            f"{job['location']}\n"
+            f"\U0001f3af relevance: {job['score']}\n"
+            f"{job['job_url']}\n"
+            f"<i>via {job['site']}, JobSpy layer</i>"
+        )
+        send_telegram(token, chat_id, msg)
 
     print(f"{matched} relevant out of {0 if df is None else len(df)} raw results")
 
