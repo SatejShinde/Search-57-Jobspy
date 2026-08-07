@@ -37,19 +37,29 @@ from pathlib import Path
 import requests
 from jobspy import scrape_jobs
 
-# --------------------------------------------------------------------------
-# Companies already covered by check_jobs.py's direct scrapers -- excluded
-# here so postings aren't double-notified. Kept as a separate literal list
-# rather than importing from check_jobs.py, on purpose (decoupled systems).
-# If the tracked-company list changes there, update it here too.
-# --------------------------------------------------------------------------
+# Companies already RELIABLY covered by check_jobs.py's direct scrapers --
+# excluded here so postings aren't double-notified. Google and Meta are
+# deliberately NOT in this set even though check_jobs.py nominally tracks
+# them: that direct scraping doesn't actually work for either (confirmed
+# 2026-08 -- both return 0 real results regardless of fixes tried), so
+# excluding them here would mean losing them from both systems at once.
+# JobSpy goes through LinkedIn/Indeed instead of hitting Google/Meta's own
+# sites directly, so it doesn't hit the same wall.
 TRACKED_COMPANY_NAMES = {
-    "amazon", "microsoft", "meta", "apple", "google", "nvidia", "tesla",
+    "amazon", "microsoft", "nvidia", "tesla",
     "qualcomm", "intel", "texas instruments", "analog devices",
     "rockwell automation", "honeywell", "john deere", "amd", "broadcom",
     "microchip", "nxp", "stmicroelectronics", "silicon labs", "siemens",
     "emerson electric", "axon", "western digital",
 }
+
+# Companies exempt from the West-only geographic filter below -- willing
+# to relocate anywhere in the US for these specifically, unlike everything
+# else JobSpy surfaces. Google and Meta per this exemption; "big tech"
+# generally was mentioned too, but there's no clean signal to detect that
+# category from a JobSpy row -- add a name here directly if a specific
+# company should get the same treatment.
+NO_RELOCATION_LIMIT = {"google", "meta"}
 
 # One combined, OR-everything search term instead of 7 separate category
 # calls. Still does real relevance narrowing at the search-term level (see
@@ -85,20 +95,36 @@ def relevance_score(description: str) -> int:
     text = (description or "").lower()
     return sum(1 for kw in SKILL_KEYWORDS if kw in text)
 
-# Second-pass filter on the title -- catches phrasing the search terms
-# above didn't anticipate, trims noise from Indeed's description matching.
-# Location filter: only companies where you'd actually consider going.
-# California preferred (no relocation), remote also fine (no relocation
-# either way). JobSpy's location strings are "City, State, Country" --
-# state is usually abbreviated ("CA") but matching the full name too in
-# case a source returns it unabbreviated.
-# Location filter: only regions you'd actually consider without relocating.
-# Broadened from CA-only to "the West" -- CA, WA, OR, NV, AZ. That's an
-# assumption about what "the West" means; adjust WEST_STATES if you want
-# it wider (add CO/UT/ID) or narrower (back to just CA). Remote also
-# passes, since remote doesn't require relocating either way.
+
+# Location filters. Two tiers:
+#  - WEST_OR_REMOTE: everything except NO_RELOCATION_LIMIT companies.
+#    CA/WA/OR/NV/AZ or remote -- adjust WEST_STATES if that definition's
+#    off (add CO/UT/ID for wider, back to just CA for narrower).
+#  - US_STATES / is_us_location: Google and Meta specifically -- any real
+#    US location, not just the West. Same logic as check_jobs.py's
+#    is_us_location(), ported here since these are separate, deliberately
+#    decoupled scripts.
 WEST_STATES = {"CA", "WA", "OR", "NV", "AZ"}
 WEST_OR_REMOTE = re.compile(r"\b(" + "|".join(WEST_STATES) + r")\b|California", re.IGNORECASE)
+
+US_STATES = {
+    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID",
+    "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS",
+    "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK",
+    "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV",
+    "WI", "WY", "DC",
+}
+_US_STATE_PATTERN = re.compile(r"\b(" + "|".join(US_STATES) + r")\b")
+_US_COUNTRY_PATTERN = re.compile(r"\b(USA|U\.S\.A?\.?|United States)\b", re.IGNORECASE)
+
+
+def is_us_location(location: str) -> bool:
+    if not location:
+        return False
+    text = location.upper()
+    return bool(_US_COUNTRY_PATTERN.search(text) or _US_STATE_PATTERN.search(text))
+
+
 
 ROLE_KEYWORDS = re.compile(
     r"\b(embedded|firmware|hardware|electrical engineer(?:ing)?|"
@@ -180,7 +206,10 @@ def main() -> None:
 
             location = str(row.get("location") or "")
             is_remote = bool(row.get("is_remote"))
-            if not (is_remote or WEST_OR_REMOTE.search(location)):
+            if company.lower() in NO_RELOCATION_LIMIT:
+                if not (is_remote or is_us_location(location)):
+                    continue
+            elif not (is_remote or WEST_OR_REMOTE.search(location)):
                 continue
 
             matched += 1
