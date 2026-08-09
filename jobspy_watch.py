@@ -46,7 +46,8 @@ from jobspy import scrape_jobs
 # JobSpy goes through LinkedIn/Indeed instead of hitting Google/Meta's own
 # sites directly, so it doesn't hit the same wall.
 TRACKED_COMPANY_NAMES = {
-    "amazon", "microsoft", "qualcomm", "intel", "texas instruments", "analog devices",
+    "amazon", "microsoft", "nvidia", "tesla",
+    "qualcomm", "intel", "texas instruments", "analog devices",
     "rockwell automation", "honeywell", "john deere", "amd", "broadcom",
     "microchip", "nxp", "stmicroelectronics", "silicon labs", "siemens",
     "emerson electric", "axon", "western digital", "amd",
@@ -131,6 +132,15 @@ def is_us_location(location: str) -> bool:
 
 
 
+# Confirms the posting is actually titled as an internship/co-op --
+# distinct from ROLE_KEYWORDS below (which checks for the technical
+# category). Missing this was a real bug: Indeed/LinkedIn search full
+# description text, not just titles, so a senior/director posting whose
+# description happens to mention "our interns" would match the search
+# query without this check. Same definition as check_jobs.py's KEYWORDS,
+# kept consistent across the whole system on purpose.
+INTERN_TITLE = re.compile(r"\b(intern|internship|co-?op)\b", re.IGNORECASE)
+
 ROLE_KEYWORDS = re.compile(
     r"\b(embedded|firmware|hardware|electrical engineer(?:ing)?|"
     r"controls engineer(?:ing)?|automation engineer(?:ing)?|plc|iot|"
@@ -195,6 +205,8 @@ def main() -> None:
 
     matched = 0
     raw_total = 0
+    raw_by_site: dict[str, int] = {}
+    matched_by_site: dict[str, int] = {}
     to_notify = []
 
     # Role-scoped search: everything except Google/Meta, which get their
@@ -202,6 +214,8 @@ def main() -> None:
     df = fetch(SEARCH_TERM)
     if df is not None:
         raw_total += len(df)
+        for site, count in df["site"].value_counts().items():
+            raw_by_site[str(site)] = raw_by_site.get(str(site), 0) + int(count)
         for _, row in df.iterrows():
             title = str(row.get("title") or "")
             company = str(row.get("company") or "").strip()
@@ -209,6 +223,8 @@ def main() -> None:
 
             if company.lower() in UNRESTRICTED_SEARCH_TERMS:
                 continue  # handled by the dedicated search below instead
+            if not INTERN_TITLE.search(title):
+                continue
             if not ROLE_KEYWORDS.search(title):
                 continue
             if company.lower() in TRACKED_COMPANY_NAMES:
@@ -223,12 +239,14 @@ def main() -> None:
 
             matched += 1
             new_ids.add(job_url)
+            site = str(row.get("site") or "")
+            matched_by_site[site] = matched_by_site.get(site, 0) + 1
             if job_url not in seen:
                 score = relevance_score(str(row.get("description") or ""))
                 to_notify.append({
                     "score": score, "company": company, "title": title,
                     "location": location, "job_url": job_url,
-                    "site": str(row.get("site") or ""),
+                    "site": site,
                 })
 
     # Google / Meta: unrestricted by role, any US location. Company field
@@ -239,6 +257,8 @@ def main() -> None:
         if df is None:
             continue
         raw_total += len(df)
+        for site, count in df["site"].value_counts().items():
+            raw_by_site[str(site)] = raw_by_site.get(str(site), 0) + int(count)
         for _, row in df.iterrows():
             title = str(row.get("title") or "")
             company = str(row.get("company") or "").strip()
@@ -246,6 +266,8 @@ def main() -> None:
 
             if company_name not in company.lower():
                 continue  # search matched the text "Google"/"Meta" somewhere, but this isn't actually them
+            if not INTERN_TITLE.search(title):
+                continue  # "Early Career X" or a Director role whose description mentions interns -- not itself an internship
             if not job_url:
                 continue
 
@@ -256,6 +278,8 @@ def main() -> None:
 
             matched += 1
             new_ids.add(job_url)
+            site = str(row.get("site") or "")
+            matched_by_site[site] = matched_by_site.get(site, 0) + 1
             if job_url not in seen:
                 score = relevance_score(str(row.get("description") or ""))
                 to_notify.append({
@@ -280,6 +304,8 @@ def main() -> None:
         send_telegram(token, chat_id, msg)
 
     print(f"{matched} relevant out of {raw_total} raw results across 3 searches")
+    print(f"  raw by site: {raw_by_site}")
+    print(f"  matched by site: {matched_by_site}")
 
     state["_seen"] = sorted(seen | new_ids)
     save_state(state)
