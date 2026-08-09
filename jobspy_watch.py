@@ -46,20 +46,12 @@ from jobspy import scrape_jobs
 # JobSpy goes through LinkedIn/Indeed instead of hitting Google/Meta's own
 # sites directly, so it doesn't hit the same wall.
 TRACKED_COMPANY_NAMES = {
-    "amazon", "microsoft", "nvidia", "tesla",
-    "qualcomm", "intel", "texas instruments", "analog devices",
+    "amazon", "microsoft", "qualcomm", "intel", "texas instruments", "analog devices",
     "rockwell automation", "honeywell", "john deere", "amd", "broadcom",
     "microchip", "nxp", "stmicroelectronics", "silicon labs", "siemens",
-    "emerson electric", "axon", "western digital",
+    "emerson electric", "axon", "western digital", "amd",
 }
 
-# Companies exempt from the West-only geographic filter below -- willing
-# to relocate anywhere in the US for these specifically, unlike everything
-# else JobSpy surfaces. Google and Meta per this exemption; "big tech"
-# generally was mentioned too, but there's no clean signal to detect that
-# category from a JobSpy row -- add a name here directly if a specific
-# company should get the same treatment.
-NO_RELOCATION_LIMIT = {"google", "meta"}
 
 # One combined, OR-everything search term instead of 7 separate category
 # calls. Still does real relevance narrowing at the search-term level (see
@@ -74,6 +66,19 @@ SEARCH_TERM = (
     'OR "hardware validation" OR "validation engineer" OR "systems design" '
     'OR "robotics hardware" OR "robotics engineer") (intern OR co-op)'
 )
+
+# Google and Meta get a SEPARATE, unrestricted search -- not filtered to
+# hardware/embedded roles at all, per explicit instruction to surface
+# every US internship at these two, not just the ones matching SEARCH_TERM
+# above. This has to be a distinct API call, not just a different
+# post-filter: SEARCH_TERM itself determines what the job boards return in
+# the first place, so a Product Manager or Data Science posting at Google
+# would never even be fetched by the role-scoped search, regardless of
+# how permissive the filter afterward is.
+UNRESTRICTED_SEARCH_TERMS = {
+    "google": '"Google" (intern OR co-op)',
+    "meta": '"Meta" (intern OR co-op)',
+}
 
 # Cheap relevance score for triage -- NOT a resume-tailor-quality match
 # (that needs the full master resume + real judgment per posting, not a
@@ -173,30 +178,37 @@ def main() -> None:
     new_ids: set[str] = set()
     total_new = 0
 
-    try:
-        df = scrape_jobs(
-            site_name=["indeed", "linkedin", "zip_recruiter"],
-            search_term=SEARCH_TERM,
-            location="United States",
-            results_wanted=100,
-            hours_old=72,
-            country_indeed="USA",
-        )
-    except Exception as exc:
-        sys.exit(f"fetch failed: {exc}")
-
-    if df is None or df.empty:
-        print("0 raw results")
-        df = None
+    def fetch(term: str) -> "pd.DataFrame | None":
+        try:
+            df = scrape_jobs(
+                site_name=["indeed", "linkedin", "zip_recruiter"],
+                search_term=term,
+                location="United States",
+                results_wanted=100,
+                hours_old=72,
+                country_indeed="USA",
+            )
+        except Exception as exc:
+            print(f"  fetch failed for {term!r}: {exc}", file=sys.stderr)
+            return None
+        return None if df is None or df.empty else df
 
     matched = 0
+    raw_total = 0
     to_notify = []
+
+    # Role-scoped search: everything except Google/Meta, which get their
+    # own unrestricted searches below instead.
+    df = fetch(SEARCH_TERM)
     if df is not None:
+        raw_total += len(df)
         for _, row in df.iterrows():
             title = str(row.get("title") or "")
             company = str(row.get("company") or "").strip()
             job_url = str(row.get("job_url") or "")
 
+            if company.lower() in UNRESTRICTED_SEARCH_TERMS:
+                continue  # handled by the dedicated search below instead
             if not ROLE_KEYWORDS.search(title):
                 continue
             if company.lower() in TRACKED_COMPANY_NAMES:
@@ -206,10 +218,7 @@ def main() -> None:
 
             location = str(row.get("location") or "")
             is_remote = bool(row.get("is_remote"))
-            if company.lower() in NO_RELOCATION_LIMIT:
-                if not (is_remote or is_us_location(location)):
-                    continue
-            elif not (is_remote or WEST_OR_REMOTE.search(location)):
+            if not (is_remote or WEST_OR_REMOTE.search(location)):
                 continue
 
             matched += 1
@@ -217,11 +226,41 @@ def main() -> None:
             if job_url not in seen:
                 score = relevance_score(str(row.get("description") or ""))
                 to_notify.append({
-                    "score": score,
-                    "company": company,
-                    "title": title,
-                    "location": location,
-                    "job_url": job_url,
+                    "score": score, "company": company, "title": title,
+                    "location": location, "job_url": job_url,
+                    "site": str(row.get("site") or ""),
+                })
+
+    # Google / Meta: unrestricted by role, any US location. Company field
+    # is checked explicitly since the search term matching "Google" or
+    # "Meta" as text doesn't guarantee that's the actual employer.
+    for company_name, term in UNRESTRICTED_SEARCH_TERMS.items():
+        df = fetch(term)
+        if df is None:
+            continue
+        raw_total += len(df)
+        for _, row in df.iterrows():
+            title = str(row.get("title") or "")
+            company = str(row.get("company") or "").strip()
+            job_url = str(row.get("job_url") or "")
+
+            if company_name not in company.lower():
+                continue  # search matched the text "Google"/"Meta" somewhere, but this isn't actually them
+            if not job_url:
+                continue
+
+            location = str(row.get("location") or "")
+            is_remote = bool(row.get("is_remote"))
+            if not (is_remote or is_us_location(location)):
+                continue
+
+            matched += 1
+            new_ids.add(job_url)
+            if job_url not in seen:
+                score = relevance_score(str(row.get("description") or ""))
+                to_notify.append({
+                    "score": score, "company": company, "title": title,
+                    "location": location, "job_url": job_url,
                     "site": str(row.get("site") or ""),
                 })
 
@@ -240,7 +279,7 @@ def main() -> None:
         )
         send_telegram(token, chat_id, msg)
 
-    print(f"{matched} relevant out of {0 if df is None else len(df)} raw results")
+    print(f"{matched} relevant out of {raw_total} raw results across 3 searches")
 
     state["_seen"] = sorted(seen | new_ids)
     save_state(state)
