@@ -1,0 +1,23 @@
+{
+  "s57_f70ded7d8ecccd58cc0de1e2174741bb": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Hewlett Packard Enterprise | HPE",
+      "title": "Wireless Hardware Engineering Intern",
+      "location": "San Jose, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-058904913da91869",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=058904913da91869",
+      "direct_url": "https://careers.hpe.com/us/en/job/HPE1US1218701EXTERNALENUS/Wireless-Hardware-Engineering-Intern?utm_source=indeed&utm_medium=phenom-feeds",
+      "score": 2
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "42795550672"
+  }
+}
