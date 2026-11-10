@@ -42,6 +42,7 @@ class JobSpyExportTests(unittest.TestCase):
         ats={**RECORD,'collector':'search57','ats_id':'123','requisition_id':'123','jobspy_id':''}
         indeed={**RECORD,'platform':'indeed','jobspy_id':'in-123','url':'https://www.indeed.com/viewjob?jk=123'}
         self.assertEqual(len({job_key(RECORD),job_key(ats),job_key(indeed)}),3)
+        self.assertNotEqual(job_key(RECORD),job_key({**ats,'company':'jobspy'}))
         rows,_=self.parse(messages(RECORD,'Body','available')+messages(ats,'Body','available')+messages(indeed,'Body','available'))
         self.assertEqual(len(rows),3)
 

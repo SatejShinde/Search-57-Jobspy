@@ -40,7 +40,7 @@ def job_key(record):
         if not identity and record['platform']=='indeed':
             identity=dict(parse_qsl(urlsplit(record['url']).query)).get('jk','')
         identity=identity or normalized_url(record["url"])
-        return "s57_" + digest(f"jobspy|{record['platform']}|{identity}")[:32]
+        return "s57_" + digest(f"collector:jobspy|{record['platform']}|{identity}")[:32]
     company = re.sub(r"\W+", "", record.get("company", "").casefold())
     req = str(record.get("requisition_id") or record.get("ats_id") or "").split("@")[0]
     identity = req.casefold() or normalized_url(record["url"])
