@@ -13,11 +13,12 @@
       "direct_url": "https://careers.hpe.com/us/en/job/HPE1US1218701EXTERNALENUS/Wireless-Hardware-Engineering-Intern?utm_source=indeed&utm_medium=phenom-feeds",
       "score": 2
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "42795550672"
+    "listing_run_id": "42795550672",
+    "alert_message_id": 14326
   }
 }
