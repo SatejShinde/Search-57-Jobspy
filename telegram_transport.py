@@ -74,4 +74,3 @@ def send_plain(token, chat_id, text, *, deadline=None, post=None, sleep=time.sle
             break
         sleep(wait)
     raise DeliveryError("Telegram delivery unconfirmed; pending for retry")
-

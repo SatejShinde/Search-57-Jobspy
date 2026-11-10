@@ -125,4 +125,3 @@ class ProtocolTests(unittest.TestCase):
             data = {"about":"messages: [not structural]"*5000, "chats":{"list":[{"messages":[{"id":1,"text":"x"*100000}]},{"messages":[{"id":2,"text":"ok"}]}]}}
             path.write_text(json.dumps(data), encoding="utf-8")
             self.assertEqual([m["id"] for m in iter_messages(path)], [1,2])
-
