@@ -1,0 +1,73 @@
+name: JobSpy description follow-up
+on:
+  workflow_run:
+    workflows: [watch-jobspy]
+    types: [completed]
+    branches: [master]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: watch-jobspy
+  cancel-in-progress: false
+  queue: max
+jobs:
+  deliver:
+    if: github.ref == 'refs/heads/master' && github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check for active pending work
+        id: pending
+        env:
+          JOBSPY_DESCRIPTIONS_ENABLED: ${{ vars.JOBSPY_DESCRIPTIONS_ENABLED }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('pending_jobspy.json')
+          queue=json.loads(p.read_text()) if p.exists() else {}
+          enabled=os.getenv('JOBSPY_DESCRIPTIONS_ENABLED')=='true'
+          active=any(not e['alert_sent'] or enabled and e['want_description'] for e in queue.values())
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('active='+str(active).lower()+'\n')
+          print(json.dumps({'pending':len(queue),'active':active,'descriptions_enabled':enabled}))
+          PY
+      - if: steps.pending.outputs.active == 'true'
+        run: pip install -r requirements.txt
+      - name: Recover bounded origin-run listing artifacts
+        if: steps.pending.outputs.active == 'true'
+        continue-on-error: true
+        timeout-minutes: 1
+        uses: actions/github-script@v7
+        env:
+          JOBSPY_DESCRIPTIONS_ENABLED: ${{ vars.JOBSPY_DESCRIPTIONS_ENABLED }}
+        with:
+          script: |
+            await require('./restore_listing_artifacts.js')({github,context,core});
+      - name: Bounded targeted descriptions and unconfirmed-alert recovery
+        if: steps.pending.outputs.active == 'true'
+        env:
+          JOBSPY_DESCRIPTIONS_ENABLED: ${{ vars.JOBSPY_DESCRIPTIONS_ENABLED }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python jobspy_delivery.py
+      - name: Persist all confirmed delivery checkpoints
+        if: always()
+        run: python persist_state.py
+      - name: Retain metadata for failed-push recovery
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jobspy-followup-recovery-${{ github.run_id }}
+          path: |
+            pending_jobspy.json
+            state_jobspy.json
+          retention-days: 1
+          if-no-files-found: ignore

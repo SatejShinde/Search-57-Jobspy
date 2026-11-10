@@ -1,2 +1,2 @@
-  python-jobspy
-  requests
+python-jobspy==1.4.1
+requests
