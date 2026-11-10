@@ -1,33 +1,11 @@
 #!/usr/bin/env python3
-"""Poll LinkedIn/Indeed/ZipRecruiter for internship/co-op postings matching
-Satej's role taxonomy, at companies NOT already covered by check_jobs.py's
-direct ATS scrapers. Deliberately standalone -- not imported from or
-importing check_jobs.py, per instruction to keep these systems decoupled.
+"""Existing three JobSpy searches, followed by checkpointed original alerts.
 
-Usage:
-    python jobspy_watch.py
-
-Design notes (read before changing the CATEGORIES below):
-
-- Search terms are broad, OR-combined phrases per category, NOT the exact
-  literal titles from the source taxonomy. Real postings use wildly
-  different phrasing for the same role (Western Digital: "Systems Design
-  & Integration Intern"; Tesla: "Software Validation Engineer, Factory
-  Firmware") -- searching exact titles would miss almost everything.
-- One search call per category (7 total), not one per exact title (~24).
-  Fewer, broader calls is both more complete AND safer: LinkedIn
-  specifically rate-limits hard and JobSpy's own docs say proxies are
-  "basically a must" past trivial volume. No proxies configured here --
-  keeping call count low is the mitigation instead.
-- A second-pass keyword filter runs on whatever comes back, since Indeed
-  matches description text too and will include noise a title-only filter
-  would miss.
-- "google" is intentionally not in site_name: JobSpy's Google search needs
-  a hand-crafted query per search (copied from a live Google Jobs search
-  box), which doesn't automate cleanly across 7 categories.
+Description details are retrieved separately, only for selected notifications.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import re
@@ -36,6 +14,8 @@ from pathlib import Path
 
 import requests
 from jobspy import scrape_jobs
+from jobspy_delivery import (QUEUE, CACHE, enqueue, reconcile, checkpoint, send_alerts, send_alert)
+from telegram_transport import load, save
 
 # Companies already RELIABLY covered by check_jobs.py's direct scrapers --
 # excluded here so postings aren't double-notified. Google and Meta are
@@ -162,28 +142,38 @@ def save_state(state: dict) -> None:
     STATE_PATH.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n")
 
 
-def send_telegram(token: str, chat_id: str, text: str) -> None:
-    resp = requests.post(
-        f"https://api.telegram.org/bot{token}/sendMessage",
-        json={
-            "chat_id": chat_id,
-            "text": text,
-            "parse_mode": "HTML",
-            "disable_web_page_preview": False,
-        },
-        timeout=15,
-    )
-    if not resp.ok:
-        print(f"  [telegram error] {resp.status_code}: {resp.text[:200]}", file=sys.stderr)
+def retained_fields(row):
+    def value(name):
+        result=row.get(name)
+        return result if isinstance(result,str) and result not in {"nan","None"} else ""
+    return {"jobspy_id":value("id"),"job_url_direct":value("job_url_direct"),
+            "description":value("description")}
+
+
+def notify_pending(queue,state,token,chat_id):
+    confirmed=send_alerts(queue,state,checkpoint,
+                          lambda record,deadline:send_alert(token,chat_id,record,deadline))
+    checkpoint(queue,state)
+    print(f"Done. {confirmed} alerts confirmed; {sum(not e['alert_sent'] for e in queue.values())} unconfirmed alerts remain recoverable.")
 
 
 def main() -> None:
+    parser=argparse.ArgumentParser()
+    phases=parser.add_mutually_exclusive_group()
+    phases.add_argument("--collect-only",action="store_true")
+    phases.add_argument("--alerts-only",action="store_true")
+    args=parser.parse_args()
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID")
-    if not token or not chat_id:
+    if not args.collect_only and (not token or not chat_id):
         sys.exit("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set")
 
     state = load_state()
+    queue=load(QUEUE)
+    reconcile(queue,state)
+    if args.alerts_only:
+        notify_pending(queue,state,token,chat_id)
+        return
     seen = set(state.get("_seen", []))
     new_ids: set[str] = set()
     total_new = 0
@@ -197,9 +187,10 @@ def main() -> None:
                 results_wanted=100,
                 hours_old=72,
                 country_indeed="USA",
+                fetch_description=False,
             )
         except Exception as exc:
-            print(f"  fetch failed for {term!r}: {exc}", file=sys.stderr)
+            print(f"  fetch failed for {term!r}: {type(exc).__name__}", file=sys.stderr)
             return None
         return None if df is None or df.empty else df
 
@@ -246,7 +237,7 @@ def main() -> None:
                 to_notify.append({
                     "score": score, "company": company, "title": title,
                     "location": location, "job_url": job_url,
-                    "site": site,
+                    "site": site, **retained_fields(row),
                 })
 
     # Google / Meta: unrestricted by role, any US location. Company field
@@ -285,31 +276,27 @@ def main() -> None:
                 to_notify.append({
                     "score": score, "company": company, "title": title,
                     "location": location, "job_url": job_url,
-                    "site": str(row.get("site") or ""),
+                    "site": str(row.get("site") or ""), **retained_fields(row),
                 })
 
     # Highest-relevance postings first, so triage-by-scrolling actually
     # works instead of reviewing 150 in arbitrary arrival order.
     to_notify.sort(key=lambda j: j["score"], reverse=True)
 
+    cache={}
+    enabled=os.getenv("JOBSPY_DESCRIPTIONS_ENABLED")=="true"
     for job in to_notify:
-        total_new += 1
-        msg = (
-            f"\U0001f195 <b>{job['company']}</b>: {job['title']}\n"
-            f"{job['location']}\n"
-            f"\U0001f3af relevance: {job['score']}\n"
-            f"{job['job_url']}\n"
-            f"<i>via {job['site']}, JobSpy layer</i>"
-        )
-        send_telegram(token, chat_id, msg)
+        enqueue(queue,job,enabled,cache)
+    save(CACHE,cache)
+    checkpoint(queue,state)
 
     print(f"{matched} relevant out of {raw_total} raw results across 3 searches")
     print(f"  raw by site: {raw_by_site}")
     print(f"  matched by site: {matched_by_site}")
 
-    state["_seen"] = sorted(seen | new_ids)
-    save_state(state)
-    print(f"Done. {total_new} new postings sent to Telegram.")
+    print(f"{len(to_notify)} newly selected rows; {len(queue)} pending job identities")
+    if not args.collect_only:
+        notify_pending(queue,state,token,chat_id)
 
 
 if __name__ == "__main__":

@@ -9,31 +9,51 @@ permissions:
 concurrency:
   group: watch-jobspy
   cancel-in-progress: false
+  queue: max
 
 jobs:
   check:
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          ref: master
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
+          python-version: '3.12'
       - run: pip install -r requirements.txt
-
-      - name: Check LinkedIn/Indeed/ZipRecruiter for new postings
+      - name: Collect the existing three searches without per-result detail fetches
+        env:
+          JOBSPY_DESCRIPTIONS_ENABLED: ${{ vars.JOBSPY_DESCRIPTIONS_ENABLED }}
+        run: python jobspy_watch.py --collect-only
+      - name: Persist selected identities before any Telegram send
+        run: python persist_state.py
+      - name: Hand off transient listing descriptions
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: jobspy-listing-descriptions
+          path: .runtime/jobspy-listings.json
+          include-hidden-files: true
+          retention-days: 1
+          if-no-files-found: ignore
+      - name: Send original alerts in existing relevance order
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python jobspy_watch.py
-
-      - name: Commit updated state
-        run: |
-          git config user.name "jobspy-watcher-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add state_jobspy.json
-          git diff --staged --quiet || git commit -m "state: jobspy tier update"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push
+        run: python jobspy_watch.py --alerts-only
+      - name: Persist acknowledgements including partial runs
+        if: always()
+        run: python persist_state.py
+      - name: Retain metadata checkpoints for failed-push recovery
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jobspy-recovery-${{ github.run_id }}
+          path: |
+            pending_jobspy.json
+            state_jobspy.json
+          retention-days: 1
+          if-no-files-found: ignore
