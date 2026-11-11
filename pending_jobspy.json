@@ -1,1 +1,42 @@
-{}
+{
+  "s57_a901bc72aabe5ce1451e998308ac1a78": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Intern — Neural Network Training and Hardware–Software Co-Design",
+      "location": "Redmond, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488248124",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488248124",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  },
+  "s57_5e8423e94744244b7f242a43213c9572": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Audio Systems (PhD)",
+      "location": "Sunnyvale, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488240480",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488240480",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
