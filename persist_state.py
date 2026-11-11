@@ -24,7 +24,7 @@ def authorize_action(env):
 
 
 def publish(*, run=git, sleep=time.sleep):
-    paths = ["state_jobspy.json", "pending_jobspy.json"]
+    paths = ["state_jobspy.json", "pending_jobspy.json", "archive_outbox_jobspy.json"]
     paths = [p for p in paths if Path(p).is_file()]
     for path in paths:
         json.loads(Path(path).read_text(encoding="utf-8"))

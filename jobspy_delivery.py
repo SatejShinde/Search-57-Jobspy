@@ -27,6 +27,8 @@ def record_for(job):
 
 def enqueue(queue,job,enabled,cache):
     record=record_for(job);key=job_key(record)
+    from archive_bridge import enqueue_source
+    enqueue_source(record)
     queue.setdefault(key,dict(record=record,alert_sent=False,want_description=enabled,
                               attempts=0,acks={},last_attempt=0))
     if enabled and text(job.get("description")).strip():
@@ -104,6 +106,8 @@ def deliver(queue,state,cache,checkpoint,send,send_original,retrieve=bounded_ret
                 del queue[key];checkpoint(queue,state);continue
             if not enabled: continue
             detail=retrieve(entry,cache.get(key,""),min(25,deadline-time.monotonic()-10))
+            from archive_bridge import capture_detail
+            capture_detail(entry,detail)
             wires=messages({**entry["record"],"description_source":detail["source"]},detail["text"],detail["status"],
                            "Source: "+detail["source"]+"; "+detail["note"])
             revision=digest(detail["text"])

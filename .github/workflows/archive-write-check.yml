@@ -1,0 +1,30 @@
+name: Private archive scoped write verification
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Checkout private job archive with archive-only deploy key
+        if: always()
+        uses: actions/checkout@v4
+        with:
+          repository: SatejShinde/Summer2027-Job-Archive
+          ref: main
+          path: .runtime/private-archive
+          ssh-key: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
+      - name: Verify a real scoped private write without a job or Telegram send
+        if: always()
+        env:
+          ARCHIVE_TIER: jobspy
+        run: |
+          pip install -q jsonschema==4.26.0
+          python archive_bridge.py --archive .runtime/private-archive --tier "jobspy" --verify-write

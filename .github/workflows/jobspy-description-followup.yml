@@ -61,6 +61,28 @@ jobs:
       - name: Persist all confirmed delivery checkpoints
         if: always()
         run: python persist_state.py
+      - name: Checkout private job archive with archive-only deploy key
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 1
+        uses: actions/checkout@v4
+        with:
+          repository: SatejShinde/Summer2027-Job-Archive
+          ref: main
+          path: .runtime/private-archive
+          ssh-key: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
+      - name: Publish archive outbox (alerts and pending state remain independent)
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 2
+        env:
+          ARCHIVE_TIER: jobspy
+        run: |
+          pip install -q jsonschema==4.26.0
+          python archive_bridge.py --archive .runtime/private-archive --tier "jobspy"
+      - name: Persist archive outbox acknowledgements
+        if: always()
+        run: python persist_state.py
       - name: Retain metadata for failed-push recovery
         if: failure()
         uses: actions/upload-artifact@v4
@@ -69,5 +91,6 @@ jobs:
           path: |
             pending_jobspy.json
             state_jobspy.json
+            archive_outbox_jobspy.json
           retention-days: 1
           if-no-files-found: ignore
