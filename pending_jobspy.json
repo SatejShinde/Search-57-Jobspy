@@ -1,1 +1,44 @@
-{}
+{
+  "s57_e58677ba66000bb7f43e9f829d21181c": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, AI Core Machine Learning (PhD)",
+      "location": "Menlo Park, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-5291cd2cf9391e57",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=5291cd2cf9391e57",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE0000004d1BUAQ_1001&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F2432079507324778%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3Db56c8bce-dd23-11f1-abf3-3f645cb78099%26rx_job%3Da1KiE0000004d1BUAQ_1001%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261111T000405Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
+      "score": 3
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "42935804258"
+  },
+  "s57_a4c271ffd1b953d1a3fed4c03a3a8790": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Strategic Sourcing Manager Intern — Reality Labs Hardware (2027)",
+      "location": "Menlo Park, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-1086011537f2b194",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=1086011537f2b194",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE0000003tSzUAI&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F1632929388311563%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3Db657b2b6-dd23-11f1-8d8f-3f645cb78099%26rx_job%3Da1KiE0000003tSzUAI%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261111T000405Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "42935804258"
+  }
+}
