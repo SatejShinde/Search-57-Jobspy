@@ -13,11 +13,12 @@
       "direct_url": "https://grnh.se/62e4h8xs1us",
       "score": 7
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "43044117831"
+    "listing_run_id": "43044117831",
+    "alert_message_id": 16087
   }
 }
