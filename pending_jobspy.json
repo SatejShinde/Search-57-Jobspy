@@ -1,1 +1,64 @@
-{}
+{
+  "s57_4f0ae32b9ee781ded4eef850ef2df7af": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Samsara",
+      "title": "Electrical Engineering Co-Op",
+      "location": "Seattle, WA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-c14a4ac7268038e1",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=c14a4ac7268038e1",
+      "direct_url": "https://grnh.se/62e4h8xs1us",
+      "score": 7
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "42928008312"
+  },
+  "s57_126a7f046fe86836b29fac432a9e3859": {
+    "record": {
+      "collector": "jobspy",
+      "company": "NeuroSpark",
+      "title": "AI Hardware Optimization Engineer Intern",
+      "location": "Santa Clara, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-6c303484dee4dbbb",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=6c303484dee4dbbb",
+      "direct_url": "https://ats.rippling.com/neurospark/jobs/ef320ab6-de30-40f6-bfdf-ebe648838ac3?jobSite=Indeed",
+      "score": 3
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "42928008312"
+  },
+  "s57_1787a0c20c7c7e71dea669ba71e63511": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Keysight Technologies",
+      "title": "Hardware Engineering Intern (EE)",
+      "location": "Santa Rosa, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4487833789",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4487833789",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
