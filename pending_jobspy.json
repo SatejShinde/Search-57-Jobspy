@@ -13,12 +13,13 @@
       "direct_url": "https://grnh.se/62e4h8xs1us",
       "score": 7
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "42928008312"
+    "listing_run_id": "42928008312",
+    "alert_message_id": 15127
   },
   "s57_126a7f046fe86836b29fac432a9e3859": {
     "record": {
@@ -34,12 +35,13 @@
       "direct_url": "https://ats.rippling.com/neurospark/jobs/ef320ab6-de30-40f6-bfdf-ebe648838ac3?jobSite=Indeed",
       "score": 3
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "42928008312"
+    "listing_run_id": "42928008312",
+    "alert_message_id": 15128
   },
   "s57_1787a0c20c7c7e71dea669ba71e63511": {
     "record": {
@@ -55,10 +57,11 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 15129
   }
 }
