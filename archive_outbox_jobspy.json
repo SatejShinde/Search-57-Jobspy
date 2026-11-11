@@ -1,1 +1,19 @@
-{}
+{
+  "cea0993b8ffa62f79fb835d9253b4281b150a79f9dfef4912c09d252171bfe88": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Keysight Technologies",
+      "title": "Hardware Engineering Intern (EE)",
+      "location": "Santa Rosa, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-76d93232ce3d2fe4",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=76d93232ce3d2fe4",
+      "direct_url": "https://jobs.keysight.com/jobs/56432/job?utm_source=indeed_integration&iis=Job%20Board&iisn=Indeed&indeed-apply-token=73a2d2b2a8d6d5c0a62696875eaebd669103652d3f0c2cd5445d3e66b1592b0f",
+      "score": 11
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-11T10:03:55.421973Z"
+  }
+}
