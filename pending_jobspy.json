@@ -1,1 +1,23 @@
-{}
+{
+  "s57_3cc55767aa37da2b00269b9e6d86054c": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Samsara",
+      "title": "Electrical Engineering Co-Op",
+      "location": "Los Angeles, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-56ac1455d089e03e",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=56ac1455d089e03e",
+      "direct_url": "https://grnh.se/62e4h8xs1us",
+      "score": 7
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "43044117831"
+  }
+}
