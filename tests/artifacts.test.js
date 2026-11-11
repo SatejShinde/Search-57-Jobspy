@@ -50,3 +50,14 @@ test('disabled descriptions perform no artifact network calls',async()=>fixture(
   process.env.JOBSPY_DESCRIPTIONS_ENABLED='false';
   const f=context({one:{want_description:true,listing_run_id:'123'}});await restore(f.args);assert.equal(f.calls.length,0);
 }));
+test('encrypted listing artifact restores the original source text privately',async()=>fixture(async()=>{
+  const previous=process.env.JOB_ARCHIVE_SSH_KEY;
+  process.env.JOB_ARCHIVE_SSH_KEY='fixture archive key';process.env.JOBSPY_DESCRIPTIONS_ENABLED='true';
+  try {
+    const {seal}=require('../artifact_cipher');
+    const payload=JSON.parse(seal(Buffer.from(JSON.stringify({one:'Complete source fixture'}))));
+    const f=context({one:{want_description:true,listing_run_id:'123'}},{payload});
+    await restore(f.args);
+    assert.equal(JSON.parse(fs.readFileSync('.runtime/jobspy-listings.json')).one,'Complete source fixture');
+  } finally {if(previous===undefined)delete process.env.JOB_ARCHIVE_SSH_KEY;else process.env.JOB_ARCHIVE_SSH_KEY=previous;}
+}));

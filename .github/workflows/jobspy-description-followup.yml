@@ -48,6 +48,7 @@ jobs:
         uses: actions/github-script@v7
         env:
           JOBSPY_DESCRIPTIONS_ENABLED: ${{ vars.JOBSPY_DESCRIPTIONS_ENABLED }}
+          JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
         with:
           script: |
             await require('./restore_listing_artifacts.js')({github,context,core});

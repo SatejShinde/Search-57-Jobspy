@@ -30,12 +30,17 @@ jobs:
         run: python jobspy_watch.py --collect-only
       - name: Persist selected identities before any Telegram send
         run: python persist_state.py
+      - name: Encrypt transient listing payload before artifact upload
+        continue-on-error: true
+        env:
+          JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
+        run: node artifact_cipher.js seal .runtime/jobspy-listings.json
       - name: Hand off transient listing descriptions
         continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: jobspy-listing-descriptions
-          path: .runtime/jobspy-listings.json
+          path: .runtime/jobspy-listings.json.enc
           include-hidden-files: true
           retention-days: 1
           if-no-files-found: ignore

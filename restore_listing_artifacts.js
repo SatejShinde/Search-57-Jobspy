@@ -20,8 +20,12 @@ module.exports = async ({github, context, core, exec = require('node:child_proce
         repo:context.repo.repo,artifact_id:artifact.id,archive_format:'zip',request:{timeout:8000}});
       fs.writeFileSync(zip,Buffer.from(response.data));
       // No archive extraction: read the one expected file, rejecting other data.
-      const value=JSON.parse(exec('unzip',['-p',zip,'jobspy-listings.json'],
-        {encoding:'utf8',timeout:5000,maxBuffer:16*1024*1024}));
+      const options={encoding:'utf8',timeout:5000,maxBuffer:16*1024*1024};
+      let encrypted;
+      try {encrypted=JSON.parse(exec('unzip',['-p',zip,'jobspy-listings.json.enc'],options));} catch {}
+      const value=encrypted?.v===1 && encrypted.ciphertext
+        ? JSON.parse(require('./artifact_cipher').open(encrypted).toString('utf8'))
+        : JSON.parse(exec('unzip',['-p',zip,'jobspy-listings.json'],options)); // expiring pre-migration artifacts
       for (const [key,entry] of entries) {
         if (entry.listing_run_id===run_id && typeof value[key]==='string') cache[key]=value[key];
       }
