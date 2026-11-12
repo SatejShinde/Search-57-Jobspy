@@ -1,1 +1,121 @@
-{}
+{
+  "dfc44307d5f40a3e8a1332b76b1847bc30370db9f2f8d125457328f1020ddd4e": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Smart Glasses in Wearables AI (PhD)",
+      "location": "New York, NY, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488521012",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488521012",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-12T12:04:10.334378Z"
+  },
+  "fd7fa6f0b6a22fc09e3fe2b3325629c026a46f5efd53e6f4269d0572718008de": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, LLM Memory and Skills (PhD)",
+      "location": "New York, NY, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488509529",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488509529",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-12T12:04:10.335458Z"
+  },
+  "08e420a1ca66468501ab078677caaccaa824ba91dae339288af1ef7300baa63f": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Foundation Model Optimization (PhD)",
+      "location": "Menlo Park, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488516166",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488516166",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-12T12:04:10.336165Z"
+  },
+  "70a7e6a45ef813cb05452568e678e06b503fe37ce1205de72fbd06c50652f00f": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Foundation Model Optimization (PhD)",
+      "location": "Sunnyvale, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488510449",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488510449",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-12T12:04:10.336789Z"
+  },
+  "da61adfd7ca9cbf2d1a43e5ef33b2307127f12ee1ec602c75c7942fbab12ae7b": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Foundation Model Optimization (PhD)",
+      "location": "Burlingame, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488509528",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488509528",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-12T12:04:10.337340Z"
+  },
+  "f37362d42521f4a22aa1e3364a4c6b903782fb18a01d1efefe380ab57ca51a1a": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, LLM Memory and Skills (PhD)",
+      "location": "Seattle, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488519070",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488519070",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-12T12:04:10.337915Z"
+  },
+  "4757a80f2caa5675481684c1c63fa6bd4f9b6759510099b4eb09debbd37c6ac8": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, LLM Memory and Skills (PhD)",
+      "location": "Bellevue, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488520020",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488520020",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-12T12:04:10.338485Z"
+  }
+}

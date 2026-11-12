@@ -1,1 +1,142 @@
-{}
+{
+  "s57_462412b587bd5a750679fa4a6fe942e0": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Smart Glasses in Wearables AI (PhD)",
+      "location": "New York, NY, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488521012",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488521012",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  },
+  "s57_70a30da438b8a9557d872d904f43da3b": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, LLM Memory and Skills (PhD)",
+      "location": "New York, NY, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488509529",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488509529",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  },
+  "s57_bd1f1a82995c286b8aaf709e208fb0dd": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Foundation Model Optimization (PhD)",
+      "location": "Menlo Park, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488516166",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488516166",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  },
+  "s57_f3b6c6568ed7cbdc87a686481fd9255a": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Foundation Model Optimization (PhD)",
+      "location": "Sunnyvale, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488510449",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488510449",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  },
+  "s57_b4ff6fdbf2b180c0dc8823d0fdcea4e6": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Foundation Model Optimization (PhD)",
+      "location": "Burlingame, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488509528",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488509528",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  },
+  "s57_4f6a6ae2ffe9d4f6e75ade4bb801148d": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, LLM Memory and Skills (PhD)",
+      "location": "Seattle, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488519070",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488519070",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  },
+  "s57_a29092182aac8bf1b72cd4ad8921416a": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, LLM Memory and Skills (PhD)",
+      "location": "Bellevue, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488520020",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488520020",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
