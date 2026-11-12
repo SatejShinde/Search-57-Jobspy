@@ -1,1 +1,36 @@
-{}
+{
+  "3c98c0015b72417f3704fe0fa563620430bdd5bf477573daaafbf20447729844": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Smart Glasses in Wearables AI (PhD)",
+      "location": "New York, NY, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-0c3718d06ab445b1",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=0c3718d06ab445b1",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE0000003UXpUAM_1002&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F1584033410435097%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3Dd136e0ee-ddec-11f1-aa66-e9d61973004f%26rx_job%3Da1KiE0000003UXpUAM_1002%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261112T080405Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
+      "score": 5
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-12T09:03:54.331488Z"
+  },
+  "80181da872f5256a0d9d3288ee0957d65851c905aa4c2b0900af22744af0f5b2": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, LLM Memory and Skills (PhD)",
+      "location": "Seattle, WA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-5606dc454137e638",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=5606dc454137e638",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE0000004h3BUAQ_1001&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F1676116714093186%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3D88ce0820-de0e-11f1-9a8f-9b9a4894d5fb%26rx_job%3Da1KiE0000004h3BUAQ_1001%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261112T080405Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
+      "score": 2
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-12T09:03:54.332001Z"
+  }
+}
