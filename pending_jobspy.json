@@ -13,11 +13,12 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 17086
   },
   "s57_70a30da438b8a9557d872d904f43da3b": {
     "record": {
@@ -33,11 +34,12 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 17088
   },
   "s57_bd1f1a82995c286b8aaf709e208fb0dd": {
     "record": {
@@ -53,11 +55,12 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 17090
   },
   "s57_f3b6c6568ed7cbdc87a686481fd9255a": {
     "record": {
@@ -73,11 +76,12 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 17092
   },
   "s57_b4ff6fdbf2b180c0dc8823d0fdcea4e6": {
     "record": {
@@ -93,11 +97,12 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 17094
   },
   "s57_4f6a6ae2ffe9d4f6e75ade4bb801148d": {
     "record": {
@@ -113,11 +118,12 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 17095
   },
   "s57_a29092182aac8bf1b72cd4ad8921416a": {
     "record": {
@@ -133,10 +139,11 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 17096
   }
 }
