@@ -1,1 +1,23 @@
-{}
+{
+  "s57_b0c6a29d2884c31bac03059a8f0a8a12": {
+    "record": {
+      "collector": "jobspy",
+      "company": "SK hynix memory solutions",
+      "title": "Embedded Software Engineer Intern",
+      "location": "San Jose, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-efe255ee97903b9b",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=efe255ee97903b9b",
+      "direct_url": "https://grnh.se/olytkm6a9us",
+      "score": 6
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "43151993819"
+  }
+}
