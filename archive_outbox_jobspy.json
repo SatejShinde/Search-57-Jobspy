@@ -1,1 +1,19 @@
-{}
+{
+  "4e71d789e04a049bed334a49c651cdfd9138304e1f7e68ec6e634c9a890ff314": {
+    "record": {
+      "collector": "jobspy",
+      "company": "HP",
+      "title": "Technology & Innovation Organization Electrical Engineering Internship",
+      "location": "Corvallis, OR, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4490735978",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4490735978",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-13T17:04:20.983089Z"
+  }
+}
