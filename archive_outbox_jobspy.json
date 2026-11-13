@@ -1,1 +1,70 @@
-{}
+{
+  "98a51991641bbc2e88fc9a410423116abccdf237bc6ea68e2d8871ee13d4b9ce": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "UX Research Scientist Intern, Contextual AI (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488913969",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488913969",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-13T12:03:15.233764Z"
+  },
+  "5831ae5bed31d0daa987566cb3d96c2f4e941605708ea2c8b96ad45e275e2462": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Technical Program Manager Intern, Reality Labs — 2027",
+      "location": "New York, NY, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488923694",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488923694",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-13T12:03:15.234551Z"
+  },
+  "74d213c12c168e01e4a3e9aba5a9d8f3c1ea172528be327a43b07cb6d427428e": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, TPU(PhD)",
+      "location": "Menlo Park, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488917982",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488917982",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-13T12:03:15.235095Z"
+  },
+  "fdb650cdb4e119d561165c61d68fa77d940ae729d0cb40f6dfb87cd3d366dd17": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Generative AI & 3D Generation (PhD)",
+      "location": "Burlingame, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4488925579",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4488925579",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-13T12:03:15.235486Z"
+  }
+}
