@@ -13,12 +13,13 @@
       "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE0000004qKzUAI&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F1158829233342350%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3Dad1555dc-dfc2-11f1-a007-03f0f0fbfdc0%26rx_job%3Da1KiE0000004qKzUAI%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261114T080430Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
       "score": 4
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "43578514146"
+    "listing_run_id": "43578514146",
+    "alert_message_id": 19170
   },
   "s57_4374cc10e2689714f41eb5f782f4c68a": {
     "record": {
@@ -34,11 +35,12 @@
       "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE0000004q9hUAA&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F1674297360998408%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3Dad152561-dfc2-11f1-8d01-03f0f0fbfdc0%26rx_job%3Da1KiE0000004q9hUAA%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261114T080430Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
       "score": 2
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "43578514146"
+    "listing_run_id": "43578514146",
+    "alert_message_id": 19172
   }
 }
