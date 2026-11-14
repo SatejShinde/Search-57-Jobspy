@@ -13,12 +13,13 @@
       "direct_url": "https://grnh.se/hj82bvrj8us",
       "score": 4
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "43543911945"
+    "listing_run_id": "43543911945",
+    "alert_message_id": 18921
   },
   "s57_86637d8f14c513e4e64500b1e03cb7e7": {
     "record": {
@@ -34,11 +35,12 @@
       "direct_url": "https://bloomenergy.wd1.myworkdayjobs.com/en-US/BloomEnergyCareers/job/San-Jose-California/Electrical-Engineering-Intern--Masters-_JR-25385",
       "score": 1
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "43543911945"
+    "listing_run_id": "43543911945",
+    "alert_message_id": 18922
   }
 }
