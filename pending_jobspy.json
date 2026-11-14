@@ -1,1 +1,22 @@
-{}
+{
+  "s57_1fa6096295c9e2a8d5c1708c6ec628d0": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Diffractive Optics (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4489336959",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4489336959",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
