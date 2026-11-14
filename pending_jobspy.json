@@ -1,1 +1,23 @@
-{}
+{
+  "s57_07c142fbdfa6d28a81a98c02a0562a6d": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Rambus",
+      "title": "ATE Test Engineer Intern",
+      "location": "San Jose, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-0edae749649893f9",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=0edae749649893f9",
+      "direct_url": "https://careers-rambus.icims.com/jobs/23117/ate-test-engineer-intern/job?in_iframe=1",
+      "score": 4
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "43549385761"
+  }
+}
