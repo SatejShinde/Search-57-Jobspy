@@ -1,1 +1,36 @@
-{}
+{
+  "6684f3825dd15459b80a78a044c9d00d7f6c1f61d57b8c98f57e2c5f2721534a": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Lightmatter",
+      "title": "Hardware Test Engineering, Intern (Summer 2027)",
+      "location": "Mountain View, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-155eb0688350aa89",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=155eb0688350aa89",
+      "direct_url": "https://grnh.se/hj82bvrj8us",
+      "score": 4
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-14T02:04:47.269795Z"
+  },
+  "a2073a0a493cf5a39d860277265fb7a56673871215fd1b06d9dffb986e467bfd": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Bloom Energy",
+      "title": "Electrical Engineering Intern (Masters)",
+      "location": "San Jose, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-3710b2168871b414",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=3710b2168871b414",
+      "direct_url": "https://bloomenergy.wd1.myworkdayjobs.com/en-US/BloomEnergyCareers/job/San-Jose-California/Electrical-Engineering-Intern--Masters-_JR-25385",
+      "score": 1
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-14T02:05:02.004601Z"
+  }
+}
