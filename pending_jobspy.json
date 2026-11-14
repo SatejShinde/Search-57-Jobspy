@@ -1,1 +1,23 @@
-{}
+{
+  "s57_c153e06781edb86bc2251ac15ee1caa9": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Lightmatter",
+      "title": "Hardware Test Engineering, Intern (Summer 2027)",
+      "location": "Santa Clara, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-4d7ad08fae8de956",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=4d7ad08fae8de956",
+      "direct_url": "https://grnh.se/hj82bvrj8us",
+      "score": 4
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "43531277588"
+  }
+}
