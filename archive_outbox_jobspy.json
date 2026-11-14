@@ -1,1 +1,19 @@
-{}
+{
+  "f6f10233ad409e43bf712879d4564914bacf741261d3c1922bc2a3c94acc7a18": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Materials Architecture & Device Integration (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4489341837",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4489341837",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-14T17:05:07.054243Z"
+  }
+}
