@@ -13,11 +13,12 @@
       "direct_url": "https://careers.kimley-horn.com/jobs/25192/job?utm_source=indeed_integration&iis=Job%20Board&iisn=Indeed&indeed-apply-token=73a2d2b2a8d6d5c0a62696875eaebd669103652d3f0c2cd5445d3e66b1592b0f",
       "score": 1
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "43554516283"
+    "listing_run_id": "43554516283",
+    "alert_message_id": 19047
   }
 }
