@@ -1,1 +1,19 @@
-{}
+{
+  "c321f9b20905febc16c8f5ddac2fcb173fa2470218fbcba7b217831eb06022b8": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Strategic Sourcing Manager, Intern",
+      "location": "Menlo Park, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-2213ef3caa05af05",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=2213ef3caa05af05",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE0000004qzJUAQ&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F1819500979094439%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3D6aa4f418-e048-11f1-a6f5-575fb219bcc9%26rx_job%3Da1KiE0000004qzJUAQ%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261115T040412Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-15T05:04:55.677238Z"
+  }
+}
