@@ -1,1 +1,19 @@
-{}
+{
+  "e5a69b0d7a3fa3c05f26724d1f0237090b6c8fc2fc1b7643454cda761251b4b5": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Strategic Sourcing Manager, Intern",
+      "location": "Menlo Park, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4489378836",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4489378836",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-15T11:05:05.377841Z"
+  }
+}
