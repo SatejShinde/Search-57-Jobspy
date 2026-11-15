@@ -1,1 +1,23 @@
-{}
+{
+  "s57_b56deea897c66395c9b16444cd9d60b1": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Northrop Grumman",
+      "title": "2027 Electrical Engineering Intern - Sunnyvale CA",
+      "location": "Sunnyvale, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-323d9fa3595b2880",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=323d9fa3595b2880",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3658&rx_jobId=R10260307&rx_url=https%3A%2F%2Fjobs.northropgrumman.com%2Fcareers%2Fjob%2F1340075276997%3Fcode%3DJB-17946%26domain%3Dngc.com%26rx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D288254%26rx_id%3Dc5ce342d-de94-11f1-9f4f-a734383872e3%26rx_job%3DR10260307%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261115T080412Z%26rx_vp%3Dcpc%26source%3DJB-17946%26utm_audience%3Dprospectivetalentemployees%26utm_campaign%3Dta-general%26utm_content%3Djobfeed%26utm_format%3Dcpl%26utm_medium%3Djobboard%26utm_source%3Dindeed",
+      "score": 3
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "43702015808"
+  }
+}
