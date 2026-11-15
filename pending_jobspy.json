@@ -13,12 +13,13 @@
       "direct_url": "https://bloomenergy.wd1.myworkdayjobs.com/en-US/BloomEnergyCareers/job/Fremont-California/Automation-Engineering-Intern_JR-25265",
       "score": 3
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "43665754175"
+    "listing_run_id": "43665754175",
+    "alert_message_id": 19786
   },
   "s57_3cc4440bea781571ec224d3fced2af59": {
     "record": {
@@ -34,11 +35,12 @@
       "direct_url": "https://bloomenergy.wd1.myworkdayjobs.com/en-US/BloomEnergyCareers/job/Fremont-California/Electrical-Engineering-Intern_JR-25271",
       "score": 2
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "43665754175"
+    "listing_run_id": "43665754175",
+    "alert_message_id": 19788
   }
 }
