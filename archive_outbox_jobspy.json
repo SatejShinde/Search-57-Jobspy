@@ -1,1 +1,36 @@
-{}
+{
+  "336d28047e41d4e9d603ad183681f612597c3d03065d8d5b6b379266db15bff7": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Rocketdyne",
+      "title": "Electrical Engineering Intern (Summer 2027)",
+      "location": "Redmond, WA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-178f6811e9953c96",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=178f6811e9953c96",
+      "direct_url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=2e2e53cb-a46b-4af4-8de5-702135f719fe&ccId=37629043_2&jobId=13732&source=IN&lang=en_US",
+      "score": 5
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-17T01:03:59.078624Z"
+  },
+  "b585f9e9c8d162c13d3352ff1b7022d444204166520884515bbae80d287bc3b4": {
+    "record": {
+      "collector": "jobspy",
+      "company": "KLA",
+      "title": "Firmware Intern",
+      "location": "Milpitas, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4490160093",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4490160093",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-17T01:04:16.008940Z"
+  }
+}
