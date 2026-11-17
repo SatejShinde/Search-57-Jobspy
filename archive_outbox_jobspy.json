@@ -1,1 +1,19 @@
-{}
+{
+  "e6db38d6179de605d680c094a8814d482dc61bed51e6a407d13b3567e679a995": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Lunar Energy",
+      "title": "Power Electronics Test Intern",
+      "location": "San Francisco, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-e577b5637716c49a",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=e577b5637716c49a",
+      "direct_url": "https://grnh.se/0lbsp5do4us",
+      "score": 5
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-17T03:03:07.021114Z"
+  }
+}
