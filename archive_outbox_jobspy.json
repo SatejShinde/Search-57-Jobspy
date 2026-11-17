@@ -1,1 +1,19 @@
-{}
+{
+  "a5a19ea4b7fa6837e8bfb6d5569c5944302c5bade2bcae063c569611e1e85943": {
+    "record": {
+      "collector": "jobspy",
+      "company": "KLA",
+      "title": "Firmware Intern",
+      "location": "Milpitas, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-fe60fc939271a8a1",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=fe60fc939271a8a1",
+      "direct_url": "https://kla.wd1.myworkdayjobs.com/en-US/Search/job/Milpitas-CA/Firmware-Intern_2642154-1",
+      "score": 6
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-17T04:03:15.060316Z"
+  }
+}
