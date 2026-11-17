@@ -1,1 +1,19 @@
-{}
+{
+  "bea0f17390bfd1c1d22f2f4d663c088dce3fe620c352fb38c7d7fe0427db7edc": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Intelligent Camera Systems (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4490430756",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4490430756",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-17T12:03:52.794141Z"
+  }
+}
