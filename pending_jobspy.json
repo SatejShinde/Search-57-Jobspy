@@ -13,12 +13,13 @@
       "direct_url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=2e2e53cb-a46b-4af4-8de5-702135f719fe&ccId=37629043_2&jobId=13732&source=IN&lang=en_US",
       "score": 5
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "43992267664"
+    "listing_run_id": "43992267664",
+    "alert_message_id": 21842
   },
   "s57_55d24f50a878a9ecc14d2257c6416efa": {
     "record": {
@@ -34,10 +35,11 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 21843
   }
 }
