@@ -1,1 +1,19 @@
-{}
+{
+  "f82edf1fee2bd8757bbb300c2b392106ef984196bd24b3eda73008aee0ac1fb5": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Northwood",
+      "title": "Electrical Engineering Intern (2027 Summer Internship)",
+      "location": "Torrance, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4490948876",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4490948876",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-17T02:04:00.035440Z"
+  }
+}
