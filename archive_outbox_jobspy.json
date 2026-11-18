@@ -1,1 +1,19 @@
-{}
+{
+  "dc47476677c8fcb73fb29815a09154d777eca70303b171673be6eaf34a8ed6df": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Perception, Displays and Graphics (PhD)",
+      "location": "Sunnyvale, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4490892012",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4490892012",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-18T13:03:36.970167Z"
+  }
+}
