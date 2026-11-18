@@ -13,12 +13,13 @@
       "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE0000004ve1UAA&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F1500136678656794%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3Dd28fdca8-e2a3-11f1-b509-db5d25f2d602%26rx_job%3Da1KiE0000004ve1UAA%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261118T020455Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
       "score": 3
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "44227405077"
+    "listing_run_id": "44227405077",
+    "alert_message_id": 23625
   },
   "s57_6cbe36e8f57179e930742c9a550f0d66": {
     "record": {
@@ -34,11 +35,12 @@
       "direct_url": "https://jobs.dayforcehcm.com/en-US/facllc/AEI/jobs/2226",
       "score": 2
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "44227405077"
+    "listing_run_id": "44227405077",
+    "alert_message_id": 23626
   }
 }
