@@ -1,1 +1,23 @@
-{}
+{
+  "s57_094c9cb198087d80eb4a3393e330d725": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Affiliated Engineers, Inc",
+      "title": "Electrical Engineer Intern",
+      "location": "Phoenix, AZ, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-3e1406650647835f",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=3e1406650647835f",
+      "direct_url": "https://jobs.dayforcehcm.com/en-US/facllc/AEI/jobs/2228",
+      "score": 2
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "44255632360"
+  }
+}
