@@ -13,11 +13,12 @@
       "direct_url": "https://recruiting2.ultipro.com/BRO1018BRACA/JobBoard/a06992cf-10e7-4e24-8932-26d607a3049e/OpportunityDetail?opportunityId=6468f76d-f7ec-4b2d-8c80-5b832e06f54e&postingId=d9ed1a64-201a-49d9-95e2-e6d13c329037",
       "score": 2
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "44204320058"
+    "listing_run_id": "44204320058",
+    "alert_message_id": 23298
   }
 }
