@@ -13,11 +13,12 @@
       "direct_url": "https://recruiting2.ultipro.com/WUN1002WND/JobBoard/9708d541-f9d1-4b52-90c0-63b2aeab68c2/OpportunityDetail?opportunityId=bb2b658b-4c07-429c-b75a-7ca0a30c6bb1&postingId=01371d79-e3b7-4c7b-b760-bbe428882355",
       "score": 5
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "44614522094"
+    "listing_run_id": "44614522094",
+    "alert_message_id": 26569
   }
 }
