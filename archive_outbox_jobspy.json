@@ -1,1 +1,19 @@
-{}
+{
+  "319d83b621d361c78d6c5a0047befb2f7b04c55ba905dad7d418ebe485801ef9": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Scout Space",
+      "title": "Embedded Firmware Engineering Intern",
+      "location": "Washington, DC, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-59a841e43003e2af",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=59a841e43003e2af",
+      "direct_url": "https://grnh.se/utvt7whf8us",
+      "score": 12
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-19T18:02:08.248368Z"
+  }
+}
