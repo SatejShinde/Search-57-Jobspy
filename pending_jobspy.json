@@ -1,1 +1,23 @@
-{}
+{
+  "s57_7829e5bf45968b347d02048cf12a34c8": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Schweitzer Engineering Laboratories",
+      "title": "Electrical Engineering Intern",
+      "location": "Irvine, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-425e5d92a2146dbb",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=425e5d92a2146dbb",
+      "direct_url": "https://selinc.wd1.myworkdayjobs.com/SEL/job/California---Irvine/Electrical-Engineering-Intern_2026-24990-1",
+      "score": 3
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "44455400473"
+  }
+}
