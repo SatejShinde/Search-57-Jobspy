@@ -1,1 +1,36 @@
-{}
+{
+  "dc57417992c560984320dffcdb46b2cf82daefe9c90a7150f16192b264b1cc4c": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Computational Mechanics (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4491646021",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4491646021",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-19T19:02:46.033482Z"
+  },
+  "29b132f5b2efda6759150136e6084195c55a4b8c38afb50ff58cbb43b9483058": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Computational Mechanics (PhD)",
+      "location": "Pasadena, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4491632510",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4491632510",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-19T19:02:46.033854Z"
+  }
+}
