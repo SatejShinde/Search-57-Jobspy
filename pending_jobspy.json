@@ -13,11 +13,12 @@
       "direct_url": "https://selinc.wd1.myworkdayjobs.com/SEL/job/California---Irvine/Electrical-Engineering-Intern_2026-24990-1",
       "score": 3
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "44455400473"
+    "listing_run_id": "44455400473",
+    "alert_message_id": 25169
   }
 }
