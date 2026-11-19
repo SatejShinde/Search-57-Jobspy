@@ -1,1 +1,23 @@
-{}
+{
+  "s57_eb86a7b29a41389fde23eb4448081b1b": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Computational Mechanics (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-d6add1f48267d2d6",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=d6add1f48267d2d6",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE00000051l3UAA&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F1283598853967973%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3D12f60e1a-e3b0-11f1-baa7-4d59b4802474%26rx_job%3Da1KiE00000051l3UAA%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261119T100416Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
+      "score": 3
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "44520001017"
+  }
+}
