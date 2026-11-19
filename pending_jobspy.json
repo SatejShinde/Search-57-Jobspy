@@ -1,1 +1,23 @@
-{}
+{
+  "s57_65a2602577f46d42a9087796a1b68da8": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Wunderlich-Malec",
+      "title": "Controls Engineer Internship",
+      "location": "Beaverton, OR, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-34b3d33e87dd7225",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=34b3d33e87dd7225",
+      "direct_url": "https://recruiting2.ultipro.com/WUN1002WND/JobBoard/9708d541-f9d1-4b52-90c0-63b2aeab68c2/OpportunityDetail?opportunityId=bb2b658b-4c07-429c-b75a-7ca0a30c6bb1&postingId=01371d79-e3b7-4c7b-b760-bbe428882355",
+      "score": 5
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0,
+    "listing_run_id": "44614522094"
+  }
+}
