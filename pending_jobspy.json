@@ -1,1 +1,22 @@
-{}
+{
+  "s57_4e86a4d1a6bb3390ebe40ad8e053633f": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Castelion",
+      "title": "Embedded Software Engineer Intern - Fall 2026",
+      "location": "Torrance, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4491614451",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4491614451",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
