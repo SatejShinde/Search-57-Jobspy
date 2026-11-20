@@ -1,1 +1,42 @@
-{}
+{
+  "s57_d6584fe5c93a00e933364b8a9f7ff7f4": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "UX Research Intern, Quantitative (Summer 2027)",
+      "location": "Menlo Park, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4491908602",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4491908602",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  },
+  "s57_84a92a56ddf53536fda3b83bc9bcdf30": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Thermal Engineering Intern",
+      "location": "Menlo Park, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4491920200",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4491920200",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
