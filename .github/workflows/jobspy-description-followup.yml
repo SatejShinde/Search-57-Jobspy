@@ -56,6 +56,7 @@ jobs:
         if: steps.pending.outputs.active == 'true'
         env:
           JOBSPY_DESCRIPTIONS_ENABLED: ${{ vars.JOBSPY_DESCRIPTIONS_ENABLED }}
+          JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python jobspy_delivery.py
@@ -78,6 +79,7 @@ jobs:
         timeout-minutes: 2
         env:
           ARCHIVE_TIER: jobspy
+          JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
         run: |
           pip install -q jsonschema==4.26.0
           python archive_bridge.py --archive .runtime/private-archive --tier "jobspy"

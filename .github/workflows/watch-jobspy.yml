@@ -26,6 +26,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Collect the existing three searches without per-result detail fetches
         env:
+          JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
           JOBSPY_DESCRIPTIONS_ENABLED: ${{ vars.JOBSPY_DESCRIPTIONS_ENABLED }}
         run: python jobspy_watch.py --collect-only
       - name: Persist selected identities before any Telegram send
@@ -68,6 +69,7 @@ jobs:
         timeout-minutes: 2
         env:
           ARCHIVE_TIER: jobspy
+          JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
         run: |
           pip install -q jsonschema==4.26.0
           python archive_bridge.py --archive .runtime/private-archive --tier "jobspy"

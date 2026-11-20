@@ -16,6 +16,10 @@ def job(n=1):
 
 
 class DeliveryTests(unittest.TestCase):
+    def setUp(self):
+        p=patch('archive_bridge.capture_detail',return_value=True);p.start();self.addCleanup(p.stop)
+        p=patch('archive_bridge.staged_detail',return_value=None);p.start();self.addCleanup(p.stop)
+
     def queue(self,n=1,enabled=True):
         queue={}
         for i in range(1,n+1):delivery.enqueue(queue,job(i),enabled,{})
@@ -30,19 +34,15 @@ class DeliveryTests(unittest.TestCase):
                          lambda *a:dict(text='',status='unavailable',source='targeted',note='blocked'),sleep=lambda _:None)
         self.assertFalse(q);self.assertIn(job()['job_url'],state['_seen'])
 
-    def test_multipart_partial_ack_resumes_without_repeating_successes(self):
-        q=self.queue();state={'_seen':[]};sent=[];snapshots=[]
-        detail=lambda *a:dict(text='C++ 🧪 UART\n'*1200,status='available',source='targeted:linkedin',note='fixture')
-        def send(wire,deadline):
-            sent.append(wire)
-            if len(sent)==3:raise DeliveryError('fail')
-            return len(sent)
-        delivery.deliver(q,state,{},lambda q,s:snapshots.append(copy.deepcopy(q)),send,lambda *a:99,detail,sleep=lambda _:None)
-        self.assertTrue(q);first=sent[:2]
-        self.assertEqual(len(next(iter(q.values()))['acks']),2)
-        second=[]
-        delivery.deliver(q,state,{},lambda *a:None,lambda w,d:second.append(w) or 100,lambda *a:self.fail('Do not resend alert'),detail,sleep=lambda _:None)
-        self.assertFalse(q);self.assertTrue(all(w not in first for w in second))
+    def test_archive_pending_retry_never_sends_multipart_descriptions(self):
+        q=self.queue();state={};sent=[];stage=Mock(side_effect=[False,True])
+        detail=lambda *a:dict(text='Full source fixture '*1200,status='available',source='targeted',note='fixture')
+        original=Mock(return_value=99)
+        delivery.deliver(q,state,{},lambda *a:None,lambda w,d:sent.append(w),original,detail,sleep=lambda _:None,archive_fn=stage)
+        self.assertTrue(q);self.assertEqual(original.call_count,1);self.assertEqual(sent,[])
+        delivery.deliver(q,state,{},lambda *a:None,lambda w,d:sent.append(w),original,detail,sleep=lambda _:None,archive_fn=stage)
+        self.assertFalse(q);self.assertEqual(original.call_count,1);self.assertEqual(sent,[])
+        self.assertEqual(stage.call_args.args[1]['text'],'Full source fixture '*1200)
 
     def test_disabled_descriptions_still_recover_alerts_and_pause_bodies(self):
         q=self.queue();state={}
@@ -65,13 +65,16 @@ class DeliveryTests(unittest.TestCase):
         delivery.deliver(q,state,{},lambda *a:None,lambda *a:1,lambda *a:1,retrieve,sleep=lambda _:None)
         self.assertEqual(list(q),[first])
 
-    def test_new_revision_resets_ack_identity(self):
-        q=self.queue();e=next(iter(q.values()));e.update(alert_sent=True,revision='old',acks={'old':1})
-        audits=[]
-        delivery.deliver(q,{}, {},lambda *a:None,lambda *a:2,lambda *a:1,
-                         lambda *a:dict(text='New body',status='available',source='targeted',note=''),
-                         sleep=lambda _:None,audit=audits.append)
-        self.assertFalse(q);self.assertEqual(audits[0]['confirmed_wires'],1)
+    def test_legacy_revision_acks_cannot_resume_description_sends(self):
+        q=self.queue();entry=next(iter(q.values()));entry.update(alert_sent=True,revision='old',acks={'old':1})
+        sent=Mock();audits=[]
+        delivery.deliver(q,{}, {},lambda *a:None,sent,Mock(),lambda *a:dict(text='New body',status='available',source='targeted',note=''),sleep=lambda _:None,audit=audits.append)
+        sent.assert_not_called();self.assertFalse(q);self.assertEqual(audits[0]['telegram_description_messages'],0)
+
+    def test_telegram_outage_does_not_prevent_description_archiving(self):
+        q=self.queue();stage=Mock(return_value=True)
+        delivery.deliver(q,{}, {},lambda *a:None,Mock(),Mock(side_effect=DeliveryError('offline')),lambda *a:dict(text='Full source',status='available',source='targeted',note=''),sleep=lambda _:None,archive_fn=stage)
+        stage.assert_called_once();self.assertTrue(q);self.assertFalse(next(iter(q.values()))['alert_sent'])
 
     def test_expired_cache_calls_targeted_for_only_selected_entry(self):
         q=self.queue();next(iter(q.values()))['alert_sent']=True;retrieve=Mock(return_value=dict(text='',status='unavailable',source='targeted',note=''))
@@ -107,7 +110,7 @@ class DeliveryTests(unittest.TestCase):
 
     def test_html_alert_escaping_preserves_fields(self):
         q=self.queue();value=delivery.alert(next(iter(q.values()))['record'])
-        self.assertIn('Fixture &amp; Co',value);self.assertIn('Firmware &lt;Intern&gt;',value)
+        self.assertEqual(value,'Fixture & Co \u2014 Firmware <Intern>\nCA\nhttps://www.linkedin.com/jobs/view/1')
 
 
 if __name__=='__main__':unittest.main()

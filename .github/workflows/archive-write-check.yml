@@ -25,6 +25,7 @@ jobs:
         if: always()
         env:
           ARCHIVE_TIER: jobspy
+          JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
         run: |
           pip install -q jsonschema==4.26.0
-          python archive_bridge.py --archive .runtime/private-archive --tier "jobspy" --verify-write
+          python archive_bridge.py --archive .runtime/private-archive --tier "jobspy" --verify-write --verify-archive-body

@@ -10,7 +10,8 @@ import subprocess
 import sys
 import time
 
-from telegram_jobs import digest, job_key, messages
+from telegram_jobs import job_key
+from compact_alert import alert
 from telegram_transport import DeliveryError, load, save, send_plain
 from jobspy_details import text
 
@@ -33,21 +34,16 @@ def enqueue(queue,job,enabled,cache):
                               attempts=0,acks={},last_attempt=0))
     if enabled and text(job.get("description")).strip():
         cache[key]=job["description"]
+        from archive_bridge import capture_detail
+        from jobspy_details import classification
+        capture_detail(queue[key],classification(cache[key],'listing:'+record['platform'],full=record['platform']=='indeed'))
         if os.getenv("GITHUB_RUN_ID"):
             queue[key]["listing_run_id"]=os.environ["GITHUB_RUN_ID"]
     return key
 
 
-def alert(record):
-    # Keep the original notification's fields/order/style, with safe HTML.
-    return (f"🆕 <b>{escape(record['company'])}</b>: {escape(record['title'])}\n"
-            f"{escape(record['location'])}\n🎯 relevance: {record['score']}\n"
-            f"{escape(record['url'])}\n<i>via {escape(record['platform'])}, JobSpy layer</i>")
-
-
 def send_alert(token,chat,record,deadline):
-    # Same verified transport, optional HTML only for the legacy alert.
-    return send_plain(token,chat,alert(record),deadline=deadline,parse_mode="HTML",disable_preview=False)
+    return send_plain(token,chat,alert(record),deadline=deadline,disable_preview=True)
 
 
 def acknowledge(state,entry,message_id):
@@ -91,42 +87,35 @@ def bounded_retrieve(entry,listing,seconds):
 
 
 def deliver(queue,state,cache,checkpoint,send,send_original,retrieve=bounded_retrieve,*,
-            enabled=True,seconds=240,max_jobs=12,sleep=time.sleep,audit=lambda value:None):
-    deadline=time.monotonic()+seconds
-    processed=0
-    for key,entry in sorted(list(queue.items()),key=lambda kv:kv[1].get("last_attempt",0)):
-        if not active(entry,enabled): continue
-        if processed>=max_jobs or deadline-time.monotonic()<40: break
-        processed+=1;entry["attempts"]+=1;entry["last_attempt"]=time.time();checkpoint(queue,state)
+            enabled=True,seconds=240,max_jobs=12,sleep=time.sleep,audit=lambda value:None,archive_fn=None):
+    """Only original compact alerts may use Telegram; JDs enter the durable archive outbox."""
+    from archive_bridge import capture_detail,staged_detail
+    archive_fn=archive_fn or capture_detail
+    deadline=time.monotonic()+seconds;processed=0
+    for key,entry in sorted(list(queue.items()),key=lambda kv:kv[1].get('last_attempt',0)):
+        if not active(entry,enabled):continue
+        if processed>=max_jobs or deadline-time.monotonic()<40:break
+        processed+=1;entry['attempts']+=1;entry['last_attempt']=time.time();checkpoint(queue,state)
         try:
-            if not entry["alert_sent"]:
-                acknowledge(state,entry,send_original(entry["record"],deadline));checkpoint(queue,state)
-                sleep(min(3.1,max(0,deadline-time.monotonic())))
-            if not entry["want_description"]:
-                del queue[key];checkpoint(queue,state);continue
-            if not enabled: continue
-            detail=retrieve(entry,cache.get(key,""),min(25,deadline-time.monotonic()-10))
-            from archive_bridge import capture_detail
-            capture_detail(entry,detail)
-            wires=messages({**entry["record"],"description_source":detail["source"]},detail["text"],detail["status"],
-                           "Source: "+detail["source"]+"; "+detail["note"])
-            revision=digest(detail["text"])
-            entry.update(retrieval_status=detail["status"])
-            if entry.get("revision")!=revision:
-                entry.update(revision=revision,acks={});checkpoint(queue,state)
-            for wire in wires:
-                wire_id=digest(wire)
-                if wire_id in entry["acks"]: continue
-                if deadline-time.monotonic()<3: raise DeliveryError("Time budget exhausted")
-                entry["acks"][wire_id]=send(wire,deadline);checkpoint(queue,state)
-                sleep(min(3.1,max(0,deadline-time.monotonic())))
-            audit(dict(job_key=key,status=detail["status"],source=detail["source"],
-                       characters=len(detail["text"]),sha256=revision,
-                       confirmed_wires=len(wires),complete=True))
-            del queue[key];checkpoint(queue,state)
+            if not entry['alert_sent']:
+                try:
+                    acknowledge(state,entry,send_original(entry['record'],deadline));checkpoint(queue,state)
+                    sleep(min(3.1,max(0,deadline-time.monotonic())))
+                except Exception as exc:
+                    entry['alert_error']=type(exc).__name__;checkpoint(queue,state)
+            if not entry['want_description']:
+                if entry['alert_sent']:del queue[key]
+                checkpoint(queue,state);continue
+            if not enabled:continue
+            staged=staged_detail(entry)
+            detail=staged if staged and staged.get('status')=='available' else retrieve(entry,cache.get(key,''),min(25,deadline-time.monotonic()-10))
+            if not archive_fn(entry,detail):raise DeliveryError('Archive staging unconfirmed; pending retained')
+            audit(dict(job_key=key,status=detail['status'],characters=len(detail['text']),telegram_description_messages=0,archive_staged=True))
+            if entry['alert_sent']:del queue[key]
+            checkpoint(queue,state)
         except Exception as exc:
-            entry["last_error"]=type(exc).__name__;checkpoint(queue,state)
-            audit(dict(job_key=key,complete=False,error=type(exc).__name__))
+            entry['last_error']=type(exc).__name__;checkpoint(queue,state)
+            audit(dict(job_key=key,archive_staged=False,error=type(exc).__name__))
     return processed
 
 
@@ -164,7 +153,7 @@ def main():
         print(json.dumps(dict(pending=len(queue),active=pending,descriptions_enabled=enabled)));return
     token=os.environ["TELEGRAM_BOT_TOKEN"];chat=os.environ["TELEGRAM_CHAT_ID"]
     deliver(queue,state,load(CACHE),checkpoint,
-            lambda wire,deadline:send_plain(token,chat,wire,deadline=deadline),
+            None,  # description-to-Telegram transport permanently disabled
             lambda r,deadline:send_alert(token,chat,r,deadline),enabled=enabled,
             audit=lambda value:print(json.dumps(value)))
     checkpoint(queue,state)
