@@ -13,11 +13,12 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 28547
   },
   "s57_9e5628196f9f75651aa26e3689542a44": {
     "record": {
@@ -33,11 +34,12 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 28548
   },
   "s57_f022cd8111e86085f7f5620f2cdaf4bc": {
     "record": {
@@ -53,10 +55,11 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 28549
   }
 }
