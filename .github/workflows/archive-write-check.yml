@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Checkout private job archive with archive-only deploy key
         if: always()
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SatejShinde/Summer2027-Job-Archive
           ref: main

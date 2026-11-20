@@ -29,3 +29,17 @@ Existing search queries, inventories, eligibility/location filters, schedules, r
 Full regression suites cover exact three-line output, arbitrary markup/newlines, unknown locations, clickable URLs, no multipart sends even with legacy acknowledgement state, no historical replay, independent archive staging during Telegram failure, failed private pushes, and complete encrypted-body recovery after a fresh runner.
 
 Manual `archive-write-check.yml` replays one existing real archived description through encryption and the canonical private writer and records a private receipt. It injects no job, does not scan, changes no watcher seen state, and has no Telegram credentials. It verifies full-description hashes and a real scoped-key push without historical alerts.
+
+## Bounded queue health
+
+Normal count/time limits produce a structured `deferred` status and retain work
+for the next watcher-triggered follow-up. Invalid credentials, corrupted state,
+invalid records/ciphertext, and unrecoverable writes fail visibly. Six attempts
+without progress for one hour, or an active queue age of six hours, fail with a
+stale-queue report; records are retained. Archive retry errors are sanitized
+and persisted with the encrypted outbox. Checkpoint write failures remain fatal.
+No exception text containing private bodies or credentials is logged.
+
+Actions use Node 24-compatible checkout/setup-python/setup-node v6, github-script
+v8, upload-artifact v6 and download-artifact v7 where used. Schedules, concurrency
+locks, recipients, source coverage and selection filters are unchanged.

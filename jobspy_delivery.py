@@ -12,6 +12,7 @@ import time
 
 from telegram_jobs import job_key
 from compact_alert import alert
+import queue_health as health
 from telegram_transport import DeliveryError, load, save, send_plain
 from jobspy_details import text
 
@@ -91,30 +92,35 @@ def deliver(queue,state,cache,checkpoint,send,send_original,retrieve=bounded_ret
     """Only original compact alerts may use Telegram; JDs enter the durable archive outbox."""
     from archive_bridge import capture_detail,staged_detail
     archive_fn=archive_fn or capture_detail
+    health.validate(queue)
+    for entry in queue.values():health.track(entry)
+    checkpoint(queue,state)
     deadline=time.monotonic()+seconds;processed=0
     for key,entry in sorted(list(queue.items()),key=lambda kv:kv[1].get('last_attempt',0)):
         if not active(entry,enabled):continue
         if processed>=max_jobs or deadline-time.monotonic()<40:break
+        health.begin(entry)
         processed+=1;entry['attempts']+=1;entry['last_attempt']=time.time();checkpoint(queue,state)
         try:
             if not entry['alert_sent']:
                 try:
-                    acknowledge(state,entry,send_original(entry['record'],deadline));checkpoint(queue,state)
+                    acknowledge(state,entry,send_original(entry['record'],deadline));health.progress(entry);checkpoint(queue,state)
                     sleep(min(3.1,max(0,deadline-time.monotonic())))
                 except Exception as exc:
-                    entry['alert_error']=type(exc).__name__;checkpoint(queue,state)
+                    health.error(entry,exc,'compact_alert');checkpoint(queue,state)
             if not entry['want_description']:
                 if entry['alert_sent']:del queue[key]
                 checkpoint(queue,state);continue
             if not enabled:continue
             staged=staged_detail(entry)
             detail=staged if staged and staged.get('status')=='available' else retrieve(entry,cache.get(key,''),min(25,deadline-time.monotonic()-10))
-            if not archive_fn(entry,detail):raise DeliveryError('Archive staging unconfirmed; pending retained')
+            if not archive_fn(entry,detail):
+                health.stage_failed(entry);checkpoint(queue,state);continue
             audit(dict(job_key=key,status=detail['status'],characters=len(detail['text']),telegram_description_messages=0,archive_staged=True))
             if entry['alert_sent']:del queue[key]
             checkpoint(queue,state)
         except Exception as exc:
-            entry['last_error']=type(exc).__name__;checkpoint(queue,state)
+            health.error(entry,exc,'description_recovery');checkpoint(queue,state)
             audit(dict(job_key=key,archive_staged=False,error=type(exc).__name__))
     return processed
 
@@ -144,7 +150,8 @@ def main():
             value=retrieve(payload["entry"],payload["listing"])
         print(json.dumps(value));return
     enabled=os.getenv("JOBSPY_DESCRIPTIONS_ENABLED")=="true"
-    queue=load(QUEUE);state=load(STATE);reconcile(queue,state)
+    if os.getenv('GITHUB_ACTIONS')=='true' and not QUEUE.is_file():raise health.WorkFailure('missing_pending_checkpoint')
+    queue=load(QUEUE);health.validate(queue);state=load(STATE);reconcile(queue,state)
     pending=sum(active(e,enabled) for e in queue.values())
     if args.preflight:
         if os.getenv("GITHUB_OUTPUT"):
@@ -152,14 +159,16 @@ def main():
                 f.write(f"active={'true' if pending else 'false'}\n")
         print(json.dumps(dict(pending=len(queue),active=pending,descriptions_enabled=enabled)));return
     token=os.environ["TELEGRAM_BOT_TOKEN"];chat=os.environ["TELEGRAM_CHAT_ID"]
-    deliver(queue,state,load(CACHE),checkpoint,
+    before=len(queue)
+    processed=deliver(queue,state,load(CACHE),checkpoint,
             None,  # description-to-Telegram transport permanently disabled
             lambda r,deadline:send_alert(token,chat,r,deadline),enabled=enabled,
             audit=lambda value:print(json.dumps(value)))
     checkpoint(queue,state)
     pending=sum(active(e,enabled) for e in queue.values())
-    print(json.dumps(dict(pending=len(queue),active=pending,complete=pending==0)))
-    if pending: sys.exit(1)
+    report=health.summary(queue,before,processed,enabled=enabled)
+    health.emit(report)
+    sys.exit(report['exit_code'])
 
 
 if __name__=="__main__": main()

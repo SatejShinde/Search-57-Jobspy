@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import sys
 from datetime import datetime,timezone
+import queue_health as health
 
 def utc():return datetime.now(timezone.utc).isoformat().replace('+00:00','Z')
 def load(p):return json.loads(Path(p).read_text(encoding='utf-8')) if Path(p).exists() else {}
@@ -23,17 +24,21 @@ def _enqueue_source(record,payload=None):
     if os.getenv('GITHUB_ACTIONS')!='true' and os.getenv('JOB_ARCHIVE_LOCAL_TEST')!='true':return
     path=Path('archive_outbox_'+tier(record)+'.json');queue=load(path);k=key(record)
     queue.setdefault(k,dict(record=record,retrieval_payload=payload or {},observed_at=utc()))
+    health.track(queue[k])
     save(path,queue)
 def _capture_detail(entry,detail):
     record=entry['record'];enqueue_source(record,{k:entry[k] for k in ['company','job'] if k in entry})
     if os.getenv('GITHUB_ACTIONS')!='true' and os.getenv('JOB_ARCHIVE_LOCAL_TEST')!='true':raise RuntimeError('Archive capture not enabled')
     envelope=cipher('seal-stdin',json.dumps(detail))
     path=Path('archive_outbox_'+tier(record)+'.json');queue=load(path);k=key(record)
+    changed=True
     if queue[k].get('encrypted_detail'):
         previous=json.loads(cipher('open-stdin',json.dumps(queue[k]['encrypted_detail'])))
         quality=lambda d:2 if d.get('text') and d.get('status')=='available' else 1 if d.get('text') else 0
         if quality(previous)>quality(detail):
             detail=previous;envelope=json.dumps(queue[k]['encrypted_detail'])
+        changed=previous.get('text')!=detail.get('text')
+    if changed:health.progress(queue[k])
     queue[k]['encrypted_detail']=json.loads(envelope);save(path,queue)
     # Startup's separate state branch persists this same encrypted handoff.
     entry['archive_detail']=queue[k]['encrypted_detail']
@@ -41,9 +46,10 @@ def _capture_detail(entry,detail):
     return True
 
 def cipher(operation,value):
+    if not os.getenv('JOB_ARCHIVE_SSH_KEY'):raise health.WorkFailure('archive_credentials')
     script=Path(__file__).with_name('artifact_cipher.js')
     result=subprocess.run(['node',str(script),operation],input=value,text=True,encoding='utf-8',capture_output=True,timeout=20)
-    if result.returncode:raise RuntimeError('Encrypted archive handoff unavailable')
+    if result.returncode:raise health.WorkFailure('archive_ciphertext_or_key')
     return result.stdout
 
 def staged_detail(entry):
@@ -56,12 +62,17 @@ def enqueue_source(record,payload=None):
     except Exception:print('Archive metadata checkpoint failed; original notification continues',file=sys.stderr)
 def capture_detail(entry,detail):
     try:return _capture_detail(entry,detail)
-    except Exception:
+    except Exception as exc:
+        health.error(entry,exc,'archive_staging')
         print('Archive detail handoff deferred; pending source retained',file=sys.stderr)
         return False
 def git(root,*args):
     r=subprocess.run(['git','-C',str(root),*args],capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=50)
-    if r.returncode:raise RuntimeError('Private archive Git operation failed: '+args[0])
+    if r.returncode:
+        credential=any(s in r.stderr.lower() for s in ['permission denied','authentication failed','repository not found','could not read username','error: 401','error: 403'])
+        invalid=any(s in r.stderr.lower() for s in ['not a git repository','bad object','corrupt','index file','protected branch','gh006','gh013'])
+        if invalid:raise health.WorkFailure('archive_git_state_or_policy')
+        raise health.WorkFailure('archive_credentials' if credential else 'archive_git_retry',not credential)
     return r.stdout.strip()
 def publish(root,selected_tier,verify_write=False,wrapper_state=None,verify_archive_body=False):
     root=Path(root).resolve();path=Path('archive_outbox_'+selected_tier+'.json');queue=load(path)
@@ -116,8 +127,32 @@ def publish(root,selected_tier,verify_write=False,wrapper_state=None,verify_arch
         save(path,current)
     print(json.dumps(dict(archive_sources_confirmed=len(queue),pending=len(current),write_verification=verify_write)))
 
+def report_failure(exc,selected_tier,wrapper_state=None,verification=False):
+    path=Path(wrapper_state) if wrapper_state else Path('archive_outbox_'+selected_tier+'.json')
+    if not path.is_file():raise health.WorkFailure('missing_archive_checkpoint')
+    state=load(path)
+    if not isinstance(state,dict) or wrapper_state and not isinstance(state.get('descriptionPending'),dict):raise health.WorkFailure('state_corruption')
+    queue=state['descriptionPending'] if wrapper_state else state
+    adapted={k:{**item,'alert_sent':True,'attempts':item.get('attempts',0)} for k,item in queue.items()}
+    health.validate(adapted)
+    adapted={}
+    for k,item in queue.items():
+        health.begin(item)
+        health.error(item,exc,'private_archive_write')
+        adapted[k]={**item,'alert_sent':True,'attempts':item.get('attempts',0)}
+    save(path,state)
+    report=health.summary(adapted,len(queue),len(queue))
+    report['scope']='archive_outbox'
+    if verification or not queue:
+        report.update(status='failed',reason='verification_or_unrecoverable_write',exit_code=1)
+    health.emit(report)
+    return report['exit_code']
+
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--archive',required=True);p.add_argument('--tier',choices=['fast','slow','jobspy','startup'],required=True);p.add_argument('--verify-write',action='store_true');p.add_argument('--verify-archive-body',action='store_true');p.add_argument('--wrapper-state');args=p.parse_args()
     try:publish(args.archive,args.tier,args.verify_write,args.wrapper_state,args.verify_archive_body)
     except Exception as exc:
-        print('Archive handoff deferred: '+type(exc).__name__+'; durable metadata remains queued',file=sys.stderr);sys.exit(1)
+        try:code=report_failure(exc,args.tier,args.wrapper_state,args.verify_write)
+        except Exception:
+            print('::error::Archive checkpoint cannot be read or written; refusing to report success.');code=1
+        sys.exit(code)

@@ -43,6 +43,23 @@ class BridgeTests(unittest.TestCase):
         self.assertEqual(bridge.load('archive_outbox_fast.json'),{})
     def test_repeated_metadata_identity_is_idempotent(self):
         bridge.enqueue_source(self.record);bridge.enqueue_source(self.record);self.assertEqual(len(bridge.load('archive_outbox_fast.json')),1)
+    def test_retryable_archive_failure_retains_ciphertext_and_is_deferred(self):
+        bridge.capture_detail({'record':self.record},{'text':'Verified fixture body','status':'available'})
+        code=bridge.report_failure(bridge.health.WorkFailure('archive_git_retry',True),'fast')
+        self.assertEqual(code,0)
+        self.assertEqual(bridge.staged_detail({'record':self.record})['text'],'Verified fixture body')
+        self.assertEqual(next(iter(bridge.load('archive_outbox_fast.json').values()))['work_errors'][0]['category'],'archive_git_retry')
+    def test_invalid_archive_credentials_fail_and_keep_pending(self):
+        bridge.enqueue_source(self.record)
+        self.assertEqual(bridge.report_failure(bridge.health.WorkFailure('archive_credentials'),'fast'),1)
+        self.assertEqual(len(bridge.load('archive_outbox_fast.json')),1)
+    def test_missing_or_corrupt_checkpoint_is_not_reinitialized(self):
+        with self.assertRaises(bridge.health.WorkFailure):bridge.report_failure(TimeoutError(),'fast')
+        self.assertFalse(Path('archive_outbox_fast.json').exists())
+        for value in ['broken json','[]','{"bad":{}}']:
+            Path('archive_outbox_fast.json').write_text(value)
+            with self.assertRaises(Exception):bridge.report_failure(TimeoutError(),'fast')
+            self.assertEqual(Path('archive_outbox_fast.json').read_text(),value)
     def test_local_capture_failure_cannot_break_original_alert(self):
         with patch.object(bridge,'save',side_effect=OSError('disk failure')):bridge.enqueue_source(self.record);bridge.capture_detail({'record':self.record},{'text':'Fixture'})
 
