@@ -1,1 +1,22 @@
-{}
+{
+  "s57_e2befded59d47edc170215a8f60ad891": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Lucid Motors",
+      "title": "Power Electronics Control Engineer Intern, Summer 2027",
+      "location": "Newark, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4492836932",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4492836932",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
