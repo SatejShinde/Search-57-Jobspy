@@ -1,1 +1,53 @@
-{}
+{
+  "a86f86ffc4d46820852e3239cc66c08437ec374143e7eb0aee469ddbac6514e7": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Machine Learning for Robotics (PhD)",
+      "location": "Burlingame, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-7f42310addf8ab70",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=7f42310addf8ab70",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE000000536vUAA&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F1766347491109788%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3D311807b3-e479-11f1-91af-adc3c606b920%26rx_job%3Da1KiE000000536vUAA%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261120T060438Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
+      "score": 5
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-20T07:03:04.007158Z"
+  },
+  "e66b8e787d643171d517f04a0fc17c0041a9d2ff3e845f49cef53740c95d01e3": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, AI Agents for Autonomous Laboratories (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-b0eedaee92db9520",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=b0eedaee92db9520",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE000000553tUAA&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F29481973694788756%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3D31188167-e479-11f1-890d-adc3c606b920%26rx_job%3Da1KiE000000553tUAA%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261120T060438Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
+      "score": 3
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-20T07:03:18.788474Z"
+  },
+  "b1842102da00c96af9bea4386bee239f04cc95379c5f2961b58a2d161ff07fb5": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "UX Research Intern, Quantitative (Summer 2027)",
+      "location": "Menlo Park, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-92447bd6641abb9d",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=92447bd6641abb9d",
+      "direct_url": "https://jsv3.recruitics.com/redirect?rx_cid=3239&rx_jobId=a1KiE0000004qG9UAI&rx_url=https%3A%2F%2Fwww.metacareers.com%2Fjobs%2F29109871588622645%2F%3Frx_a%3D0%26rx_c%3D%26rx_ch%3Djobp4p%26rx_group%3D187943%26rx_id%3D311755d6-e479-11f1-8641-adc3c606b920%26rx_job%3Da1KiE0000004qG9UAI%26rx_medium%3Dcpc%26rx_product%3Dprogrammatic-ppc%252Ccore%26rx_r%3Dnone%26rx_source%3Dindeed%26rx_ts%3D20261120T060438Z%26rx_vp%3Dcpc%26utm_campaign%3DJob%252Bboard%26utm_medium%3Djobs%26utm_source%3Dindeedorganic",
+      "score": 1
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-20T07:03:33.434867Z"
+  }
+}
