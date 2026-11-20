@@ -23,6 +23,8 @@ module.exports={seal,open};
 if(require.main===module) {
   try {
     const [operation,path]=process.argv.slice(2);
+    if(operation==='seal-stdin'){fs.writeFileSync(1,seal(fs.readFileSync(0)));process.exit(0);}
+    if(operation==='open-stdin'){fs.writeFileSync(1,open(fs.readFileSync(0,'utf8')));process.exit(0);}
     if(!fs.existsSync(path))process.exit(0);
     if(operation==='seal')fs.writeFileSync(path+'.enc',seal(fs.readFileSync(path)));
     else if(operation==='open' && path.endsWith('.enc'))fs.writeFileSync(path.slice(0,-4),open(fs.readFileSync(path,'utf8')));

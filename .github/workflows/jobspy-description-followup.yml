@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: master
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Check for active pending work
@@ -45,7 +45,7 @@ jobs:
         if: steps.pending.outputs.active == 'true'
         continue-on-error: true
         timeout-minutes: 1
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           JOBSPY_DESCRIPTIONS_ENABLED: ${{ vars.JOBSPY_DESCRIPTIONS_ENABLED }}
           JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
@@ -56,6 +56,7 @@ jobs:
         if: steps.pending.outputs.active == 'true'
         env:
           JOBSPY_DESCRIPTIONS_ENABLED: ${{ vars.JOBSPY_DESCRIPTIONS_ENABLED }}
+          JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python jobspy_delivery.py
@@ -64,9 +65,8 @@ jobs:
         run: python persist_state.py
       - name: Checkout private job archive with archive-only deploy key
         if: always()
-        continue-on-error: true
         timeout-minutes: 1
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SatejShinde/Summer2027-Job-Archive
           ref: main
@@ -74,10 +74,10 @@ jobs:
           ssh-key: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
       - name: Publish archive outbox (alerts and pending state remain independent)
         if: always()
-        continue-on-error: true
         timeout-minutes: 2
         env:
           ARCHIVE_TIER: jobspy
+          JOB_ARCHIVE_SSH_KEY: ${{ secrets.JOB_ARCHIVE_SSH_KEY }}
         run: |
           pip install -q jsonschema==4.26.0
           python archive_bridge.py --archive .runtime/private-archive --tier "jobspy"
@@ -86,7 +86,7 @@ jobs:
         run: python persist_state.py
       - name: Retain metadata for failed-push recovery
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: jobspy-followup-recovery-${{ github.run_id }}
           path: |
