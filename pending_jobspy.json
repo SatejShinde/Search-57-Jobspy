@@ -13,12 +13,13 @@
       "direct_url": "https://grnh.se/utvt7whf8us",
       "score": 12
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "44657771632"
+    "listing_run_id": "44657771632",
+    "alert_message_id": 27958
   },
   "s57_20a7309f8dd58bfc49052716ee47ceda": {
     "record": {
@@ -34,11 +35,12 @@
       "direct_url": "https://grnh.se/hfga5mni7us",
       "score": 10
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
     "last_attempt": 0,
-    "listing_run_id": "44657771632"
+    "listing_run_id": "44657771632",
+    "alert_message_id": 27959
   }
 }
