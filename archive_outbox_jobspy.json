@@ -1,1 +1,28 @@
-{}
+{
+  "44a73954741433622c669faad36e1591c29994ba859eaee24701a46c1583d87a": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Trener",
+      "title": "Robotics Engineer/ Lab Technician (Intern)",
+      "location": "San Jose, CA, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-8abe26bf3fafcdb4",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=8abe26bf3fafcdb4",
+      "direct_url": "https://jobs.ashbyhq.com/trener-robotics/49c2c8a6-7016-4c54-895e-9a3a4a060a74?utm_source=azOQbOBx2n",
+      "score": 5
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-20T14:02:58.130530Z",
+    "first_pending_at": 1795183378.1305506,
+    "last_progress_at": 1795183378.1702304,
+    "attempts_without_progress": 0,
+    "encrypted_detail": {
+      "v": 1,
+      "iv": "DlS8B4g2yoFK+o8o",
+      "tag": "WG17wc5r7F+4i6ZKxibzHg==",
+      "ciphertext": "qr17WLcYPPe9adH2tQKzJIVkRQo/MV1C1tfhKdXDDPxV0HjLgXVAGsFFg3NBt78ei6+WyRBRX+BEi2Zo+6LEXzctdXruumyTkVqEuLobhsX5oGxEDchtzQPoSh2owTpRsP6dMweuuaLvB7kJ4HvxU94QwE17TzlI6vovWew32y1QJFK2Mqdl+6TxTjt9AfKSOQrPJU368f5YFEXsvrA3K5gPpoqDhlAKOGsQ0CYg2fuj5pK6AKdpTYJRelsfupl5K/3jwOu25z9qqwgIfK2W7dGTVBNSiPtsermWbulTPknSjfXzKPnlutvxQRw8yVLo4oDgyKfSLi1xf87K2aJMeimzjMefBZzq/ad3rJNluecy1/KWot3F7H8fvlWkWQAxwuxDI5b0xFAi+ZJ9yBGhQZg/Co9yt3Si7Zmexj7Haaq5NzrEDIUYXiwSbq2T12i+M/9hFQb9uJaOrvHlPFOwHLBQ8VdBS7Cbqxj3NQP+hkCSAslhF2EnSJf6xcurIQIR2mCF6aRG3B2H4ONzCs+Rqa95PWEgF3ReUtDOHrTKuMtVfQaHtUqxtdAyoen6xQ51oaQexTRkhTeHvpedTTPk6AVowylockWhfh0dus7Wu+F3HyscgAUw8de5PkxJaBYMEAmQ0ubE2v/kP17m3QrHeuiupyGPcyQ5iqT4UmoPdVF2RSFsPt0A+sXMk8KhUO1hloF9NhZWJWjGbaoDnG3HHZw4QDDZiT9R1e2qw6ZqqgNfGd8VPerp5NCe7Dk2MvRmY55cCYrVBlHswk0EYt25sB8tctpYPzlVVGguTFaEWzz8ByvJXbp15qBjQv3e2LcBWp+81B6rIxEOnNrWcmeUNMcv0EBTa/i+4s/OSzV0GJdQGVvxG+9RRD671wx4MYeiEv73ZhrwtVcdaM9lQmUE1J9uhQsDPtbZJtNZ/9NVBiJdLpLmdbPd0jYzTQsUOAHCDzQ0Ki49ClaSIrPiBdCpyoRQnVkx2KIf7Mfz3r42Ka11gFLRNq8ASjCf8t9mdvj8FG035ukDuGCU442sZIcFBP1fhvDzpN9EBe80KL4IkJcKTtb9YL4RChJyPyMBFA5qKtb5AmbvsxWFC7WyIEtx5jeQ6CRZmRxrfAT6WvWSAmZowyV3voFNYMb/IhNQ+6EOiQt22PrLv43ch5MxvgKAzQ4Gah5jvEh9xs8xYznoEZLbavTZa9vFx0EFVVL3qeHAhSd/zr503snTUpksSfyqcBDMLOq/24PmtkR5AVBrbxwmqNmq84VxUxjCpqG5Aw7kf8aLeEAsjfXRQzzDSwzejTUUgH0md3fSpOiWkDVQZfSpiVPFJ8958gDDkINCeNt00bboV0RZB3Py53Qn3xD6qODMLDFd8IO4vvi89dHC2ye/lMbpBholAlPHdMORvUujIMUW35WGauiHpKzssSBQDnt38m3Au1jmaNXk3Rv1LxMGhNZafIWLPLfADHFOeog0jHWO/akFyRNaxh0CZJX6Yfg/WrkbCYTRvSmEcYobU2GXsOQkvhrWALLwyhe69A7sM7VFDA1zW69qe7/iYZuVMj1e+GOjhfsD7VKoXgD6kmjgX/e9IVEDP/O09K92bdJUf3fj5uNoQmxrTvRWNA=="
+    }
+  }
+}
