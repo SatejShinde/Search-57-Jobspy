@@ -1,1 +1,22 @@
-{}
+{
+  "s57_44286397392e51ac316f59927ad74678": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Philips",
+      "title": "Intern – Electrical Engineer – San Diego, CA – Summer 2027",
+      "location": "San Diego, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4492825452",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4492825452",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
