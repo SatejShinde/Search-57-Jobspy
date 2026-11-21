@@ -1,1 +1,42 @@
-{}
+{
+  "66cf0bc3ac096cebd5c5912f0bbdf41d2d0215842001dc5863fb8decdb81eece": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Security & Integrity (PhD)",
+      "location": "Burlingame, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4492307831",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4492307831",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-21T20:01:51.024781Z",
+    "first_pending_at": 1795291311.0247993,
+    "last_progress_at": 1795291311.0247993,
+    "attempts_without_progress": 0
+  },
+  "dd768094bc67bd33aa7c3f48335e48beb2b50fe8019387ee1cbf548a21f0edd7": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Security & Integrity (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4492316446",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4492316446",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-21T20:01:51.030828Z",
+    "first_pending_at": 1795291311.0308416,
+    "last_progress_at": 1795291311.0308416,
+    "attempts_without_progress": 0
+  }
+}
