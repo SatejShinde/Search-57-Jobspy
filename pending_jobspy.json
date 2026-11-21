@@ -13,11 +13,12 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 28585
   },
   "s57_a8ce715efd184043713afec7bfdc9a4a": {
     "record": {
@@ -33,10 +34,11 @@
       "direct_url": "",
       "score": 0
     },
-    "alert_sent": false,
+    "alert_sent": true,
     "want_description": true,
     "attempts": 0,
     "acks": {},
-    "last_attempt": 0
+    "last_attempt": 0,
+    "alert_message_id": 28586
   }
 }
