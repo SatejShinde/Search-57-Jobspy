@@ -1,1 +1,42 @@
-{}
+{
+  "d00a14ca1cca3703e344380a18db78161a19af368065b8dd8b45e2dd939ce720": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Neros Technologies",
+      "title": "Electrical Engineering Intern - Summer 2027",
+      "location": "Torrance, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4492897925",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4492897925",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-22T18:02:43.122176Z",
+    "first_pending_at": 1795370563.1221936,
+    "last_progress_at": 1795370563.1221936,
+    "attempts_without_progress": 0
+  },
+  "ae2f9287dfa79283431e714c6ab3f80069db81e69ec677f47baff9b36f718db1": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Lockheed Martin",
+      "title": "Electronics Engineer Intern",
+      "location": "Palo Alto, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4491929696",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4491929696",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-22T18:02:43.122741Z",
+    "first_pending_at": 1795370563.1227498,
+    "last_progress_at": 1795370563.1227498,
+    "attempts_without_progress": 0
+  }
+}
