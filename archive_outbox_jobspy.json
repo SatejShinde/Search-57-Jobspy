@@ -1,1 +1,42 @@
-{}
+{
+  "bbee4f37839cececfbdf6a6cb723cfb3ada5ccbedcb2841248b4e2e21a62f7d5": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Lam Research",
+      "title": "Summer 2027 - Electrical Engineering Intern - BS",
+      "location": "Fremont, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4476219067",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4476219067",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-23T05:04:12.116956Z",
+    "first_pending_at": 1795410252.1169753,
+    "last_progress_at": 1795410252.1169753,
+    "attempts_without_progress": 0
+  },
+  "552db30d1d1d2c4f3531e296c70e6b3bba92039a1e96690dc0a807c0f8da7437": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Lucid Motors",
+      "title": "Intern, Vehicle Motion Controls Engineer, Summer 2027",
+      "location": "Newark, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4492852153",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4492852153",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-23T05:04:12.117475Z",
+    "first_pending_at": 1795410252.1174836,
+    "last_progress_at": 1795410252.1174836,
+    "attempts_without_progress": 0
+  }
+}
