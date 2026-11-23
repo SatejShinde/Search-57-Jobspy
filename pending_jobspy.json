@@ -1,1 +1,22 @@
-{}
+{
+  "s57_5485b0e4bda451163958c8a0f6282cd5": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Lockheed Martin",
+      "title": "Electronics Engineer Intern",
+      "location": "Palo Alto, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4491927817",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4491927817",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
