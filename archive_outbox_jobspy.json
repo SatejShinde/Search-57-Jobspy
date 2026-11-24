@@ -208,5 +208,25 @@
       }
     ],
     "last_error": "invalid_record_or_ciphertext"
+  },
+  "17c1d818b963b5114dede82e28e3ac2e1b17979a98b6abd5e524a868dbb34dfa": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Spatial-temporal Consistent 4D Generation (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4493041137",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4493041137",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-24T18:02:30.860986Z",
+    "first_pending_at": 1795543350.8610027,
+    "last_progress_at": 1795543350.8610027,
+    "attempts_without_progress": 0
   }
 }
