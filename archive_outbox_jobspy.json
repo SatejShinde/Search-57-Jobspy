@@ -138,5 +138,25 @@
       "tag": "BavibTRTI9B4zXvNBwUeOg==",
       "ciphertext": "9/YOP3QyrGzJau8RG3zXoYh+CNZdQV8tM7l7xDUj7oQ2GCALNeiQxA3em4g9MygRS3wQNH9Ici36BDloSfgJVUmPLflO1SGh67x8ClMlRSqvOxXQ/9WUW54gGlb2Nerx9HgFEKvDKCpnxgdWk6/h3N7jTHeC4XyUV8FaGnaYg/QlsbhT"
     }
+  },
+  "a66aff63fa7b169ec06b6e4246224e4d9c574f2c856c9c83c8c07bccc311d916": {
+    "record": {
+      "collector": "jobspy",
+      "company": "JustBacked",
+      "title": "Firmware/Embedded Software Engineer Intern - Summer 2027",
+      "location": "Torrance, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4492690150",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4492690150",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-24T09:02:00.020695Z",
+    "first_pending_at": 1795510920.0207095,
+    "last_progress_at": 1795510920.0207095,
+    "attempts_without_progress": 0
   }
 }
