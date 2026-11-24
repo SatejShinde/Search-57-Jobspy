@@ -17,7 +17,7 @@
     "observed_at": "2026-11-24T01:02:33.866766Z",
     "first_pending_at": 1795482153.8667793,
     "last_progress_at": 1795482154.0574322,
-    "attempts_without_progress": 10,
+    "attempts_without_progress": 11,
     "encrypted_detail": {
       "v": 1,
       "iv": "U6+hJaTblAPPQO70",
@@ -52,7 +52,7 @@
     "observed_at": "2026-11-24T01:02:34.058179Z",
     "first_pending_at": 1795482154.0581954,
     "last_progress_at": 1795482216.8654873,
-    "attempts_without_progress": 9,
+    "attempts_without_progress": 10,
     "work_errors": [
       {
         "component": "private_archive_write",
@@ -87,7 +87,7 @@
     "observed_at": "2026-11-24T01:02:34.058682Z",
     "first_pending_at": 1795482154.058689,
     "last_progress_at": 1795482218.1610215,
-    "attempts_without_progress": 9,
+    "attempts_without_progress": 10,
     "work_errors": [
       {
         "component": "private_archive_write",
@@ -122,7 +122,7 @@
     "observed_at": "2026-11-24T01:02:34.059133Z",
     "first_pending_at": 1795482154.059139,
     "last_progress_at": 1795482218.8921437,
-    "attempts_without_progress": 9,
+    "attempts_without_progress": 10,
     "work_errors": [
       {
         "component": "private_archive_write",
