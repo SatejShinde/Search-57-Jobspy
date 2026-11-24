@@ -1,1 +1,88 @@
-{}
+{
+  "a5790bec9c7eac4654119b346b784ecc8b4bfce12261b9e3cc2135a22cc7b893": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Viasat",
+      "title": "Embedded Software Engineer Intern - Viasat Government",
+      "location": "Tempe, AZ, USA",
+      "platform": "indeed",
+      "jobspy_id": "in-a27ebd2b41a21f3e",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.indeed.com/viewjob?jk=a27ebd2b41a21f3e",
+      "direct_url": "http://careers.viasat.com/jobs/10478/job?utm_source=indeed_integration&iis=Job%20Board&iisn=Indeed&indeed-apply-token=73a2d2b2a8d6d5c0a62696875eaebd669103652d3f0c2cd5445d3e66b1592b0f",
+      "score": 4
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-24T01:02:33.866766Z",
+    "first_pending_at": 1795482153.8667793,
+    "last_progress_at": 1795482154.0574322,
+    "attempts_without_progress": 0,
+    "encrypted_detail": {
+      "v": 1,
+      "iv": "tXSG1OysHKIWYOwa",
+      "tag": "bdbitODZWt8Mro+0zyHwrQ==",
+      "ciphertext": "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"
+    }
+  },
+  "c26bbf0a47ae3074e8726960d78fa77499575a60eb66770791ea665b7c9893de": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Philips",
+      "title": "Intern – AI-Agentic Embedded Software Development - Bothell, WA - Summer 2027",
+      "location": "Bothell, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4494091391",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4494091391",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-24T01:02:34.058179Z",
+    "first_pending_at": 1795482154.0581954,
+    "last_progress_at": 1795482154.0581954,
+    "attempts_without_progress": 0
+  },
+  "38db966439c85d115a762b7d41ddcb3e9c31ba1d8b37b37bf77ac0569868c56f": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Seasats",
+      "title": "Electronics Engineering Intern",
+      "location": "San Diego, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4494078190",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4494078190",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-24T01:02:34.058682Z",
+    "first_pending_at": 1795482154.058689,
+    "last_progress_at": 1795482154.058689,
+    "attempts_without_progress": 0
+  },
+  "3fa4831a9c3c5c6c5122a94c7e45e281220cc41550833128bd65a668d5c2da8c": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Toshiba America Electronic Components, Inc.",
+      "title": "5058 Firmware Engineer Intern",
+      "location": "San Jose, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4492644664",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4492644664",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-24T01:02:34.059133Z",
+    "first_pending_at": 1795482154.059139,
+    "last_progress_at": 1795482154.059139,
+    "attempts_without_progress": 0
+  }
+}
