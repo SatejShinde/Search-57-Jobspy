@@ -156,8 +156,8 @@
     "retrieval_payload": {},
     "observed_at": "2026-11-24T09:02:00.020695Z",
     "first_pending_at": 1795510920.0207095,
-    "last_progress_at": 1795510920.0207095,
-    "attempts_without_progress": 1,
+    "last_progress_at": 1795510978.0197835,
+    "attempts_without_progress": 0,
     "work_errors": [
       {
         "component": "private_archive_write",
@@ -166,6 +166,12 @@
         "exception_type": "ValueError"
       }
     ],
-    "last_error": "invalid_record_or_ciphertext"
+    "last_error": "invalid_record_or_ciphertext",
+    "encrypted_detail": {
+      "v": 1,
+      "iv": "ffxOLyZj/CMlxnaw",
+      "tag": "JNMK/OvFnJDN5889XR3qaQ==",
+      "ciphertext": "l/sOFF3RgLCykSVpTG4a9QEi4c8MWeWOj10gNdWAOovBIkV1k9x1v8eaZ8YnedBifxgI/vbyKbnYw+yUDaVLCIw4QMzzLwy7OXitMq5cfzPg2n/RrQpXESKj7/O7xd/Uw50cew6MTUbpEDfc6b9dIMgtq/xySwuITya2aSptMFRBrsN0"
+    }
   }
 }
