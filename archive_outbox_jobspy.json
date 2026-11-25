@@ -17,7 +17,7 @@
     "observed_at": "2026-11-24T01:02:33.866766Z",
     "first_pending_at": 1795482153.8667793,
     "last_progress_at": 1795482154.0574322,
-    "attempts_without_progress": 46,
+    "attempts_without_progress": 47,
     "encrypted_detail": {
       "v": 1,
       "iv": "U6+hJaTblAPPQO70",
@@ -52,7 +52,7 @@
     "observed_at": "2026-11-24T01:02:34.058179Z",
     "first_pending_at": 1795482154.0581954,
     "last_progress_at": 1795482216.8654873,
-    "attempts_without_progress": 45,
+    "attempts_without_progress": 46,
     "work_errors": [
       {
         "component": "private_archive_write",
@@ -87,7 +87,7 @@
     "observed_at": "2026-11-24T01:02:34.058682Z",
     "first_pending_at": 1795482154.058689,
     "last_progress_at": 1795482218.1610215,
-    "attempts_without_progress": 45,
+    "attempts_without_progress": 46,
     "work_errors": [
       {
         "component": "private_archive_write",
@@ -122,7 +122,7 @@
     "observed_at": "2026-11-24T01:02:34.059133Z",
     "first_pending_at": 1795482154.059139,
     "last_progress_at": 1795482218.8921437,
-    "attempts_without_progress": 45,
+    "attempts_without_progress": 46,
     "work_errors": [
       {
         "component": "private_archive_write",
@@ -157,7 +157,7 @@
     "observed_at": "2026-11-24T09:02:00.020695Z",
     "first_pending_at": 1795510920.0207095,
     "last_progress_at": 1795510978.0197835,
-    "attempts_without_progress": 29,
+    "attempts_without_progress": 30,
     "work_errors": [
       {
         "component": "private_archive_write",
@@ -192,7 +192,7 @@
     "observed_at": "2026-11-24T13:01:53.965960Z",
     "first_pending_at": 1795525313.9659736,
     "last_progress_at": 1795525314.204404,
-    "attempts_without_progress": 22,
+    "attempts_without_progress": 23,
     "encrypted_detail": {
       "v": 1,
       "iv": "3b1hJo9vZkmu51+s",
@@ -227,7 +227,7 @@
     "observed_at": "2026-11-24T18:02:30.860986Z",
     "first_pending_at": 1795543350.8610027,
     "last_progress_at": 1795543413.5895243,
-    "attempts_without_progress": 11,
+    "attempts_without_progress": 12,
     "work_errors": [
       {
         "component": "private_archive_write",
@@ -262,7 +262,7 @@
     "observed_at": "2026-11-24T23:03:50.145882Z",
     "first_pending_at": 1795561430.1458972,
     "last_progress_at": 1795561430.4219465,
-    "attempts_without_progress": 2,
+    "attempts_without_progress": 3,
     "encrypted_detail": {
       "v": 1,
       "iv": "5bfN0azv/D2wGXOQ",
@@ -297,7 +297,7 @@
     "observed_at": "2026-11-24T23:03:50.423431Z",
     "first_pending_at": 1795561430.4234471,
     "last_progress_at": 1795561492.2920399,
-    "attempts_without_progress": 1,
+    "attempts_without_progress": 2,
     "work_errors": [
       {
         "component": "private_archive_write",
@@ -332,6 +332,15 @@
     "observed_at": "2026-11-25T00:02:37.939287Z",
     "first_pending_at": 1795564957.939305,
     "last_progress_at": 1795564957.939305,
-    "attempts_without_progress": 0
+    "attempts_without_progress": 1,
+    "work_errors": [
+      {
+        "component": "private_archive_write",
+        "category": "invalid_record_or_ciphertext",
+        "retryable": false,
+        "exception_type": "ValueError"
+      }
+    ],
+    "last_error": "invalid_record_or_ciphertext"
   }
 }
