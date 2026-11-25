@@ -628,5 +628,25 @@
       "tag": "UpqmxFDho0cEL0887z+zhA==",
       "ciphertext": "LpnGuE9/kwB02/O9Jx6hYCHEAtYzqiCa2bO1RB3aPcTh3JqUfg9ozS8LwwEQbzPfQrHSxOvbVn9R7/6zvw77f57LrVkM0W+Q4YFhhBp/j5ViiGkDChkwC0kYDBE3X3xBgVkWu/whW3f+jqVkTNvhoLByY+H3b2COA0oFnySEeEEFE0b0"
     }
+  },
+  "7e078a93d1228cf8d4a7fd42a046430169c2deee2ef91c810660c2343b8af0bf": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, MSL - Agentic Post-Training (PhD)",
+      "location": "New York, NY, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4493099035",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4493099035",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T06:02:31.905440Z",
+    "first_pending_at": 1795586551.905453,
+    "last_progress_at": 1795586551.905453,
+    "attempts_without_progress": 0
   }
 }
