@@ -803,5 +803,185 @@
       }
     ],
     "last_error": "invalid_record_or_ciphertext"
+  },
+  "87f30a08420586c536d75990b830616d143715b3adadd1c19180e998b2645d09": {
+    "record": {
+      "collector": "jobspy",
+      "company": "SambaNova",
+      "title": "Post-Silicon Validation Engineer Intern",
+      "location": "San Jose, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4494922977",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4494922977",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T20:02:52.766123Z",
+    "first_pending_at": 1795636972.7661366,
+    "last_progress_at": 1795636972.7661366,
+    "attempts_without_progress": 0
+  },
+  "ffbfd464389e1297bbdc312b1fe647482c29d0e8f03a67f1f2688ea129b25e3b": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Marvell Technology",
+      "title": "Hardware Signal Integrity Intern, MS - Summer 2027",
+      "location": "Santa Clara, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4485022746",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4485022746",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T20:02:52.768344Z",
+    "first_pending_at": 1795636972.7683547,
+    "last_progress_at": 1795636972.7683547,
+    "attempts_without_progress": 0
+  },
+  "8930111d01de3044ed58f2a5d7ed4ee9d462ce7a045aa008911fd6669a9a4802": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Google",
+      "title": "Business Data Scientist Intern, PhD, Summer 2027",
+      "location": "Atlanta, GA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4465773489",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4465773489",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T20:02:52.770258Z",
+    "first_pending_at": 1795636972.770265,
+    "last_progress_at": 1795636972.770265,
+    "attempts_without_progress": 0
+  },
+  "6690bb572f1c697137f12fcb3da4fd2286907b5a803173158a531eaea7f93f16": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Google",
+      "title": "Business Data Scientist Intern, PhD, Summer 2027",
+      "location": "Ann Arbor, MI, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4465777522",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4465777522",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T20:02:52.772158Z",
+    "first_pending_at": 1795636972.772165,
+    "last_progress_at": 1795636972.772165,
+    "attempts_without_progress": 0
+  },
+  "8f76d1b72d597424c4d5351939be8d81e355de4ced4e8428e1b8ad32f08fe1d4": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Google",
+      "title": "Business Data Scientist Intern, PhD, Summer 2027",
+      "location": "Cambridge, MA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4465775549",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4465775549",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T20:02:52.774072Z",
+    "first_pending_at": 1795636972.7740796,
+    "last_progress_at": 1795636972.7740796,
+    "attempts_without_progress": 0
+  },
+  "3916cd257166d4b20e99e7a18dec9425484623700f03440a3bcd875fcea7878f": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Google",
+      "title": "Business Data Scientist Intern, PhD, Summer 2027",
+      "location": "Austin, TX, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4465772541",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4465772541",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T20:02:52.775971Z",
+    "first_pending_at": 1795636972.7759774,
+    "last_progress_at": 1795636972.7759774,
+    "attempts_without_progress": 0
+  },
+  "f6e526bdd87c422960e56e9d9b9559bdc4aa893b28e6fa0ecc0946ac77dcb826": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Google",
+      "title": "Business Data Scientist Intern, PhD, Summer 2027",
+      "location": "Mountain View, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4465770558",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4465770558",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T20:02:52.777835Z",
+    "first_pending_at": 1795636972.7778416,
+    "last_progress_at": 1795636972.7778416,
+    "attempts_without_progress": 0
+  },
+  "af86bc1946cb52db4a6b002889f352d5b7774114fa35518b0ba36956e7d08a96": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Research Scientist Intern, Machine Learning for Robust 3D Perception (PhD)",
+      "location": "Redmond, WA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4493439518",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4493439518",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T20:02:52.779759Z",
+    "first_pending_at": 1795636972.7797658,
+    "last_progress_at": 1795636972.7797658,
+    "attempts_without_progress": 0
+  },
+  "d90503d2a3d738fa11dafe5163367ec32d1197be8fb3bb383ef02419aef08e4a": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Meta",
+      "title": "Battery Engineering Intern, Battery Systems Engineering",
+      "location": "Sunnyvale, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4493451052",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4493451052",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T20:02:52.781719Z",
+    "first_pending_at": 1795636972.781726,
+    "last_progress_at": 1795636972.781726,
+    "attempts_without_progress": 0
   }
 }
