@@ -1,1 +1,22 @@
-{}
+{
+  "s57_55b7c6bcc66f3eba52b222fc50ccf624": {
+    "record": {
+      "collector": "jobspy",
+      "company": "TetraMem - Accelerate The World",
+      "title": "US 2026 Hardware - Digital Intern",
+      "location": "San Jose, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4494734809",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4494734809",
+      "direct_url": "",
+      "score": 0
+    },
+    "alert_sent": false,
+    "want_description": true,
+    "attempts": 0,
+    "acks": {},
+    "last_attempt": 0
+  }
+}
