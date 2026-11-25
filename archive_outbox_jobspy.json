@@ -733,5 +733,25 @@
       }
     ],
     "last_error": "invalid_record_or_ciphertext"
+  },
+  "38a9327452b57f3c805ceb48a100b08ec74a8033cfe8fc5985443aaf4f69d60b": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Moog Inc.",
+      "title": "Intern, Electrical Engineering",
+      "location": "Torrance, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4494667167",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4494667167",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-25T17:03:10.990851Z",
+    "first_pending_at": 1795626190.9908705,
+    "last_progress_at": 1795626190.9908705,
+    "attempts_without_progress": 0
   }
 }
