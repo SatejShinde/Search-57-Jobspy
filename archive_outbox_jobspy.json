@@ -1223,5 +1223,25 @@
       }
     ],
     "last_error": "invalid_record_or_ciphertext"
+  },
+  "fcb372b1fb4f081a8c5eeb18e20d21c4a056ba729b5c0d6f4b4dd06af3b753c8": {
+    "record": {
+      "collector": "jobspy",
+      "company": "Northrop Grumman",
+      "title": "2027 Electronics Engineer Intern - Manhattan Beach CA",
+      "location": "Manhattan Beach, CA, USA",
+      "platform": "linkedin",
+      "jobspy_id": "li-4495251690",
+      "ats_id": "",
+      "requisition_id": "",
+      "url": "https://www.linkedin.com/jobs/view/4495251690",
+      "direct_url": "",
+      "score": 0
+    },
+    "retrieval_payload": {},
+    "observed_at": "2026-11-26T06:02:46.741580Z",
+    "first_pending_at": 1795672966.7415955,
+    "last_progress_at": 1795672966.7415955,
+    "attempts_without_progress": 0
   }
 }
